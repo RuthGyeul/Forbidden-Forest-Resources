@@ -2,7 +2,7 @@
 
 
 # [Project Forbidden Forest](https://github.com/RuthGyeul/Forbidden-Forest-Resources)
-> A RPG running game 
+A 2D RPG running game. When the JaeYoon (player) wokes up, a strange scene was waiting for him. He was abandoned in the Forbidden Forest that was restricted by the government. “Why am I here? What shall I do?” Escape this dangerous forest and figure out the secret of the Forbidden Forest.
 
 ## Versions
 
