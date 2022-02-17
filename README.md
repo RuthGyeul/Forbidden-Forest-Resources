@@ -14,7 +14,7 @@ Download latest version to play the game.
 no info
 
 ## Contributers
-> Jaeah "Jake" Lee
-Junso Oh
+> Jaeah "Jake" Lee <
+> Junso Oh <
 
 Copyright 2022 Team Blue Moon
