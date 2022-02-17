@@ -15,6 +15,6 @@ no info
 
 ## Contributers
 > Jaeah "Jake" Lee
-> Junso Oh
+Junso Oh
 
 Copyright 2022 Team Blue Moon
