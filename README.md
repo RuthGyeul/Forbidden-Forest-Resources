@@ -17,5 +17,4 @@ no info
 - Jaeah "Jake" Lee
 - Junso Oh
 
-Saint James High School
-/nCopyright 2022 Team Blue Moon
+Copyright 2022 Team Blue Moon
