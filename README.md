@@ -5,7 +5,9 @@
 A 2D RPG running game. When the JaeYoon (player) wokes up, a strange scene was waiting for him. He was abandoned in the Forbidden Forest that was restricted by the government. “Why am I here? What shall I do?” Escape this dangerous forest and figure out the secret of the Forbidden Forest.
 
 ## Versions
-
+- 1.0.1 ~ 1.0.9 - Alpha
+- 1.1.0 - Beta
+- 1.2.0 - Release
 
 ## How to play
 This game supports Window/Mac/Linux platform only.
