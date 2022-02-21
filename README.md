@@ -2,7 +2,7 @@
 
 
 # [Project Forbidden Forest](https://github.com/RuthGyeul/Forbidden-Forest-Resources)
-A 2D RPG item collecting game. Try to reach highest score from the forest and do something.
+A 2D RPG item collecting game. Try to reach highest score!
 
 ## Versions
 - 1.0.1 ~ 1.0.9 - Alpha
