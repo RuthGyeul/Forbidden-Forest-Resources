@@ -11,8 +11,7 @@ A 2D RPG running game. When the JaeYoon (player) wokes up, a strange scene was w
 
 ## How to play
 This game supports Window/Mac/Linux platform only. Download latest version to play the game.
-> A - Move Left
-> D - Move Right
+> A - Move Left / D - Move Right
 
 ## License
 no info
