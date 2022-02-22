@@ -2,12 +2,11 @@
 
 
 # [Project Forbidden Forest](https://github.com/RuthGyeul/Forbidden-Forest-Resources)
-A 2D RPG item collecting game. Try to reach highest score!
+A 2D RPG item collecting game. Try to reach highest score by eating coins while avoiding dangerous rice cake dinamite who wants to hug you!
 
 ## Versions
 - 1.0.1 ~ 1.0.9 - Alpha
-- 1.1.0 - Beta
-- 1.2.0 - Release
+- 1.1.0 - 1st Release
 
 ## How to play
 This game supports Window/Mac/Linux platform only. Download latest version to play the game.
