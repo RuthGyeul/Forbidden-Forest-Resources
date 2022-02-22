@@ -24,6 +24,6 @@ This game supports Window/Mac platform only (check before download). Download la
 - Jaeah "Jake" Lee
 - Junso Oh
 - Title Music: [Ofelias Dream](https://www.bensound.com/royalty-free-music/track/ofelias-dream)
-- InGame Music: [Toon Battle!](https://assetstore.unity.com/packages/audio/music/orchestral/free-live-music-journey-across-worlds-205221)
+- Game Background Music: [Toon Battle!](https://assetstore.unity.com/packages/audio/music/orchestral/free-live-music-journey-across-worlds-205221)
 
 Copyright 2022 Team Blue Moon
