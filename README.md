@@ -13,7 +13,7 @@ This game supports Window/Mac/Linux platform only. Download latest version to pl
 > A - Move Left / D - Move Right
 
 ## License
-- This project was used in ACTE Region 5 Tech Fair. 
+- This project was used in AETC Region 5 Tech Fair. 
 - DO NOT REUSE OR RECREATE OUR WORK.
 
 
