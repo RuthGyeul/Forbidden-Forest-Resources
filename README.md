@@ -15,7 +15,7 @@ This game supports Window/Mac/Linux platform only. Download latest version to pl
 ## License
 no info
 
-## Contributers
+## Contributers (Team Undefined)
 - Jaeah "Jake" Lee
 - Junso Oh
 
