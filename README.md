@@ -5,8 +5,8 @@
 A 2D RPG item collecting game. Try to reach the highest score by eating coins while avoiding dangerous rice cake dinamite who want to hug you!
 
 ## Versions
-- 1.0.1 ~ 1.0.9 - Alpha
-- 1.1.0 - 1st Release
+- 1.0.1 ~ 1.0.9 - Alpha Version
+- 1.1.0 - Window & MacOS
 
 ## How to play
 This game supports Window/Mac platform only (check before download). Download latest version to play the game.
