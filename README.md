@@ -7,7 +7,7 @@ A 2D RPG item collecting game. Try to reach the highest score by eating coins wh
 
 ## Versions
 - 1.0.1 ~ 1.0.9 - Alpha Version
-- 1.1.0 - Window & MacOS
+- 1.1.0 - [Window](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/Window/Forbidden_Forest_Window_1.1.0.zip) & [MacOS](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/MacOS/Forbidden_Forest_MacOS_1.1.0.zip) & [Linux](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/Linux/Forbidden_Forest_Linux_1.1.0.zip)
 
 
 ## How to play
