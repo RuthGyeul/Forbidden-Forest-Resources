@@ -9,7 +9,7 @@ A 2D RPG item collecting game. Try to reach the highest score by eating coins wh
 - 1.1.0 - 1st Release
 
 ## How to play
-This game supports Window/Mac/Linux platform only. Download latest version to play the game.
+This game supports Window/Mac platform only. Download latest version to play the game.
 > A - Move Left / D - Move Right
 
 ## License
