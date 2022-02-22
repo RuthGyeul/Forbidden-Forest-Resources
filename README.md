@@ -20,7 +20,7 @@ This game supports Window/Mac/Linux platform only. Download latest version to pl
 ## Contributers (Team Undefined)
 - Jaeah "Jake" Lee
 - Junso Oh
-- Title Music: Ofelias Dream(https://www.bensound.com/royalty-free-music/track/ofelias-dream)
-- InGame Music: Toon Battle!(https://assetstore.unity.com/packages/audio/music/orchestral/free-live-music-journey-across-worlds-205221)
+- Title Music: [Ofelias Dream](https://www.bensound.com/royalty-free-music/track/ofelias-dream)
+- InGame Music: [Toon Battle!](https://assetstore.unity.com/packages/audio/music/orchestral/free-live-music-journey-across-worlds-205221)
 
 Copyright 2022 Team Blue Moon
