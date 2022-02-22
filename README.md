@@ -26,4 +26,4 @@ This game supports Window/Mac platform only (check before download). Download la
 - Title Music: [Ofelias Dream](https://www.bensound.com/royalty-free-music/track/ofelias-dream)
 - Game Background Music: [Toon Battle!](https://assetstore.unity.com/packages/audio/music/orchestral/free-live-music-journey-across-worlds-205221)
 
-Copyright 2022 Team Blue Moon
+Copyright 2022 Team Undefined 
