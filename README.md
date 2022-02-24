@@ -16,7 +16,7 @@ This game supports Window/Mac platform only (check before download). Download la
 
 
 ## License
-- This project was used in AETC Region 5 Tech Fair. 
+- This project was used in ACTE Region 5 Tech Fair. 
 - DO NOT REUSE OR RECREATE OUR WORK.
 
 
