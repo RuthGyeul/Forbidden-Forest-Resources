@@ -6,8 +6,8 @@ A 2D RPG item collecting game. Try to reach the highest score by eating coins wh
 
 
 ## Versions
-- 1.0.1 ~ 1.0.9 - Alpha Version
-- 1.1.0 - [Window](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/Window/Forbidden_Forest_Window_1.1.0.zip) & [MacOS](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/MacOS/Forbidden_Forest_MacOS_1.1.0.zip) & [Linux](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/Linux/Forbidden_Forest_Linux_1.1.0.zip)
+- 0.0.01_Test ~ 0.0.59_Test - Test Version / Not Realsed
+- 1.1.0 - Official Release / [Window](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/Window/Forbidden_Forest_Window_1.1.0.zip) & [MacOS](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/MacOS/Forbidden_Forest_MacOS_1.1.0.zip) & [Linux](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/Linux/Forbidden_Forest_Linux_1.1.0.zip)
 
 
 ## How to play
@@ -20,10 +20,14 @@ This game supports Window/Mac platform only (check before download). Download la
 - DO NOT REUSE OR RECREATE OUR WORK.
 
 
+## Music Source
+- Title Music: [Ofelias Dream](https://www.bensound.com/royalty-free-music/track/ofelias-dream)
+- Game Background Music: [Toon Battle!](https://assetstore.unity.com/packages/audio/music/orchestral/free-live-music-journey-across-worlds-205221)
+
+
 ## Contributers (Team Undefined)
 - Jaeah "Jake" Lee
 - Junseo Oh
-- Title Music: [Ofelias Dream](https://www.bensound.com/royalty-free-music/track/ofelias-dream)
-- Game Background Music: [Toon Battle!](https://assetstore.unity.com/packages/audio/music/orchestral/free-live-music-journey-across-worlds-205221)
+
 
 Copyright ©️ 2022 By Team Undefined 
