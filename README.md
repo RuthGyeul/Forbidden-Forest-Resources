@@ -32,5 +32,4 @@ This game supports Window/Mac/Linux platform only (check before download). Downl
 - Jaeah Lee
 - Junseo Oh
 
-
 Copyright ©️ 2022 By Team Undefined 
