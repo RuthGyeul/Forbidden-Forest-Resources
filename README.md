@@ -19,8 +19,8 @@ This game supports Window/Mac/Linux platform only (check before download). Downl
 | D | Move Right |
 | R | Resume Game |
 | T | Pause Game |
-| <- | Move Left |
-| -> | Move Right |
+| Left Arrow | Move Left |
+| Right Arrow | Move Right |
 
 ## 2.0: What's New?
 - New keys
