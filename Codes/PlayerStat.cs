@@ -8,6 +8,11 @@ public class PlayerStat : MonoBehaviour
     Rigidbody2D rigid; //get rigid
     public GameObject Player; //get player
     public GameObject GameManager; //get gamemanager
+    
+    float point = 0;
+    float heal = 0;
+    float damage = 0;
+    
     GameManager GM;
 
     void Start()
