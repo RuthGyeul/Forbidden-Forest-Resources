@@ -9,9 +9,9 @@ public class PlayerStat : MonoBehaviour
     public GameObject Player; //get player
     public GameObject GameManager; //get gamemanager
     
-    float point = 0;
-    float heal = 0;
-    float damage = 0;
+    float PointC = 0;
+    float HealC = 0;
+    float DamageC = 0;
     
     GameManager GM;
 
@@ -26,16 +26,19 @@ public class PlayerStat : MonoBehaviour
         if (collision.CompareTag("Damage")) //if object tag is damage
         {
             GM.DamageB = true; //set gamemanager's DamageB boolen to true
+            DamageC ++; //count how many damage got triggered
             Destroy(collision.gameObject); //Destory the triggered object
         }
         if (collision.CompareTag("Heal"))
         {
             GM.HealB = true;
+            HealC ++;
             Destroy(collision.gameObject);
         }
         if (collision.CompareTag("Point"))
         {
             GM.PointB = true;
+            PointC ++;
             Destroy(collision.gameObject);
         }
     }
