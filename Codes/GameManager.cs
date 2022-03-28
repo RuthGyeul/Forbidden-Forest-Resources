@@ -13,12 +13,17 @@ public class GameManager : MonoBehaviour
     public GameObject GameOverText; //gameover score text
     public GameObject Music; //game music
     public GameObject Background; //background
+    
     public bool DamageB = false; //damage trigger
     public bool HealB = false; //heal trigger
     public bool PointB = false; //point trigger
+    
+    public string GameType = "ItemRush"; //determine game types
     public bool SCStat = true; //determine rather game is ongoing or not
+    
     float HP = 100; //default hp
     float SC = 0; //default score
+    
     Image HPBarI; //get hpbar image
     Text ScoreTextN; //get score text
     Text GameOverTextN; //get gameover score text
