@@ -1,4 +1,4 @@
-<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="TheForbiddenForest" src="https://raw.githubusercontent.com/RuthGyeul/Forbidden-Forest-Resources/1.0/LmaoIcon.png?token=GHSAT0AAAAAABS64P3VQWNYQI5OBSHRHVFEYSB47QA"> 
+<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="TheForbiddenForest" src="https://raw.githubusercontent.com/RuthGyeul/Forbidden-Forest-Resources/1.0/LmaoIcon.png"> 
 
 
 # [Project Forbidden Forest](https://github.com/RuthGyeul/Forbidden-Forest-Resources)
