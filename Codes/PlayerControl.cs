@@ -44,9 +44,8 @@ public class PlayerControl : MonoBehaviour
         {
             //tutorial key
         }
-
-
     }
+    
     public Vector3 ClampPosition(Vector3 position)
     {
         return new Vector3(Mathf.Clamp(position.x, -moveLimit.x, moveLimit.x), -3f, 0); //player position always set on x = moveLimit, y = -3, z = 0
