@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WASD_Joystick : MonoBehaviour
+public class PlayerControl : MonoBehaviour
 {
     Rigidbody2D rigid; //get rigid
     SpriteRenderer rend; //get renderer
@@ -21,18 +21,30 @@ public class WASD_Joystick : MonoBehaviour
         rend = GetComponent<SpriteRenderer>(); //get renerer
         playerPosition = ClampPosition(this.transform.position); //get player position & position limit
 
-        if (Input.GetKey(KeyCode.A)) //if input is A key
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            rend.flipX = true; //change character's view(?) point left or right
-            playerPosition += Vector3.left * moveSpeed * Time.deltaTime; //set player position change
-            rigid.MovePosition(playerPosition); //move player position
+            rend.flipX = true;
+            playerPosition += Vector3.left * moveSpeed * Time.deltaTime;
+            rigid.MovePosition(playerPosition);
         }
-        if (Input.GetKey(KeyCode.D))
+
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             rend.flipX = false;
             playerPosition += Vector3.right * moveSpeed * Time.deltaTime;
             rigid.MovePosition(playerPosition);
         }
+        
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //pause or resume game
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            //tutorial key
+        }
+
 
     }
     public Vector3 ClampPosition(Vector3 position)
