@@ -1,4 +1,4 @@
-<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="TheForbiddenForest" src="https://github.com/RuthGyeul/Forbidden-Forest-Resources/blob/1.0/LmaoIcon.png"> 
+<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="TheForbiddenForest" src="https://github.com/RuthGyeul/Forbidden-Forest-Resources/blob/2.0/LmaoIcon.png"> 
 
 
 # [Project Forbidden Forest](https://github.com/RuthGyeul/Forbidden-Forest-Resources)
@@ -8,6 +8,7 @@ A 2D RPG item collecting game. Try to reach the highest score by eating coins wh
 ## Versions
 - 0.0.01_Test ~ 0.0.59_Test - Test Version / Not Released
 - 1.1.0 - Official Release / [Window](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/Window/Forbidden_Forest_Window_1.1.0.zip) & [MacOS](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/MacOS/Forbidden_Forest_MacOS_1.1.0.zip) & [Linux](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/Linux/Forbidden_Forest_Linux_1.1.0.zip)
+- 2.0.0 - Official Release / [Window]()
 
 
 ## How to play
@@ -16,6 +17,18 @@ This game supports Window/Mac/Linux platform only (check before download). Downl
 | --- | ------ |
 | A | Move Left |
 | D | Move Right |
+| R | Resume Game |
+| T | Pause Game |
+| <- | Move Left |
+| -> | Move Right |
+
+## 2.0: What's New?
+- New keys
+- Game pause and resume
+- Database system
+- 2 new stages
+- few new items
+- few UI changed
 
 
 ## License
