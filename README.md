@@ -32,7 +32,7 @@ This game supports Window/Mac/Linux platform only (check before download). Downl
 
 
 ## License
-- This project was used in ACTE Region 5 Tech Fair. 
+- This project was used in ACTE State Tech Fair. 
 - DO NOT REUSE OR RECREATE OUR WORK.
 
 
