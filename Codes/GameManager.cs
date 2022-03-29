@@ -13,17 +13,18 @@ public class GameManager : MonoBehaviour
     public GameObject GameOverText; //gameover score text
     public GameObject Music; //game music
     public GameObject Background; //background
-    
+
     public bool DamageB = false; //damage trigger
     public bool HealB = false; //heal trigger
     public bool PointB = false; //point trigger
-    
+
     public string GameType = "ItemRush"; //determine game types
     public bool SCStat = true; //determine rather game is ongoing or not
-    
+    public bool GameOnGoing = true; //determine rather game is pause or not
+
     float HP = 100; //default hp
     float SC = 0; //default score
-    
+
     Image HPBarI; //get hpbar image
     Text ScoreTextN; //get score text
     Text GameOverTextN; //get gameover score text
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
         GameOverTextN = GameOverText.GetComponent<Text>(); //get gameover score text
         GameOverTextN.text = string.Format("{0:0}", SC); //gameover score text
         HPBarI.fillAmount = 1;
+        GameOnGoing = true;
     }
     void Update()
     {
@@ -80,7 +82,7 @@ public class GameManager : MonoBehaviour
         {
             GameOver.SetActive(true); //pull gameover screen
             Music.SetActive(false); //music stop
-            Background.GetComponent<BgMovement>().BgSp = 0f; //background movement stop
+            Background.GetComponent<BgMovement>().Speed = 0f; //background movement stop
         }
     }
 
@@ -133,7 +135,7 @@ public class GameManager : MonoBehaviour
         SCStat = true; //let the game bagan
         GameOver.SetActive(false); //turn off gameover page
         Music.SetActive(true); //music start
-        Background.GetComponent<BgMovement>().BgSp = 0.1f; //background start to move
+        Background.GetComponent<BgMovement>().Speed = 0.1f; //background start to move
         ScoreTextN.text = string.Format("{0:0}", SC); //score
         GameOverTextN.text = string.Format("{0:0}", SC);
         HPBarI.fillAmount = 1; //hpbar set to 100%
