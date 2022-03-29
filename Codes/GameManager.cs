@@ -179,15 +179,15 @@ public class GameManager : MonoBehaviour
         
         if (GameType == "ItemRush")
         {
-            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "status", "'done'");
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "score, status", SC + ", 'done'");
         }
         if (GameType == "stage02")
         {
-            Database.GetComponent<Database>().UpdateData("GameData", "Data", 2, "status", "'done'");
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 2, "score, status", SC + ", 'done'");
         }
         if (GameType == "stage03")
         {
-            Database.GetComponent<Database>().UpdateData("GameData", "Data", 3, "status", "'done'");
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 3, "score, status", SC + ", 'done'");
         }
         
         SceneManager.LoadScene("GameOverScene"); //change to game over scene
