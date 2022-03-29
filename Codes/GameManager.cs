@@ -42,23 +42,59 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        Game(); //let the game begane
-        if (DamageB) //if damage boolen triggered (on)
+        if (!SCStat) 
         {
-            DamageB = false; //damage boolen turn off
-            Damage(0.25f); //give damage
-            Point(-2000f); //change score
+            GetFile(); //get game file
         }
-        if (HealB)
+        
+        if (SCStat && GameOnGoing && GameType == "ItemRush") 
         {
-            HealB = false;
-            Heal(0.1f);
-            Point(500f);
+            Game(); //let the game began
+            
+            if (DamageB) //if damage boolen triggered (on)
+            {
+                DamageB = false; //damage boolen turn off
+                Damage(0.25f); //give damage
+                Point(-2000f); //change score
+            }
+            if (HealB)
+            {
+                HealB = false;
+                Heal(0.1f);
+                Point(500f);
+            }
+            if (PointB)
+            {
+                PointB = false;
+                Point(1000f);
+            }
         }
-        if (PointB)
+        
+        if (SCStat && GameOnGoing && GameType == "stage02") 
         {
-            PointB = false;
-            Point(1000f);
+        }
+        
+        if (SCStat && GameOnGoing && GameType == "stage03")
+        {
+        }
+    }
+    
+    void GetFile()
+    {
+        if (Database.GetComponent<>(Database).ReadDataS("GameData", "Data", "status", 1) == "playing") {
+            GameType = "ItemRush";
+            GameOnGoing = true;
+            SCStat = true;
+        }
+        if (Database.GetComponent<>(Database).ReadDataS("GameData", "Data", "status", 1) == "playing") {
+            GameType = "stage02";
+            GameOnGoing = true;
+            SCStat = true;
+        }
+        if (Database.GetComponent<>(Database).ReadDataS("GameData", "Data", "status", 1) == "playing") {
+            GameType = "stage03";
+            GameOnGoing = true;
+            SCStat = true;
         }
     }
 
@@ -127,7 +163,16 @@ public class GameManager : MonoBehaviour
         ScoreTextN.text = string.Format("{0}", SC); //score set
         GameOverTextN.text = string.Format("{0}", SC);
     }
-
+    
+    public void GameOver()
+    {
+        SceneManager.LoadScene("GameOverScene"); //change to game over scene
+    }
+    
+    // DELATE BELOW 
+    // DELATE DELOW
+    // DELATE BELOW 
+    
     public void Restart() //if press restart button
     {
         HP = 100; //default hp set
