@@ -7,39 +7,39 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject Player; //player
+    public GameObject Database; //database
+    
     public GameObject HPBarCover; //hpbar
     public GameObject ScoreText; //score
-    public GameObject GameOver; //gameover screen
-    public GameObject GameOverText; //gameover score text
-    public GameObject Music; //game music
-    public GameObject Background; //background
+    
+    public GameObject Music01; //game music 01
+    
+    public GameObject Background01; //background 01
+    public GameObject Background02;
+    public GameObject Background03;
+    
+    public GameObject LoadingPage; //black screen
+    public GameObject OptionArea; //option area
 
     public bool DamageB = false; //damage trigger
     public bool HealB = false; //heal trigger
     public bool PointB = false; //point trigger
 
-    public string GameType = "ItemRush"; //determine game types
-    public bool SCStat = true; //determine rather game is ongoing or not
-    public bool GameOnGoing = true; //determine rather game is pause or not
+    public string GameType = ""; //determine game types
+    public bool SCStat = false; //determine rather game is ongoing or not
+    public bool GameOnGoing = false; //determine rather game is pause or not
 
     float HP = 100; //default hp
     float SC = 0; //default score
 
     Image HPBarI; //get hpbar image
     Text ScoreTextN; //get score text
-    Text GameOverTextN; //get gameover score text
 
     void Start()
     {
-        GameOver.SetActive(false); //gameover screen turn off when start
-        HPBarI = HPBarCover.GetComponent<Image>(); //get hpbar
-        ScoreTextN = ScoreText.GetComponent<Text>(); //get score text
-        ScoreTextN.text = string.Format("{0:0}", SC); //score text format
-        GameOverTextN = GameOverText.GetComponent<Text>(); //get gameover score text
-        GameOverTextN.text = string.Format("{0:0}", SC); //gameover score text
-        HPBarI.fillAmount = 1;
-        GameOnGoing = true;
+        LoadingPage.SetActive(true); //black screen turn on when start
     }
+    
     void Update()
     {
         if (!SCStat) 
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             GetFile(); //get game file
         }
         
-        if (SCStat && GameOnGoing && GameType == "ItemRush") 
+        if (GameOnGoing && GameType == "ItemRush") 
         {
             Game(); //let the game began
             
@@ -70,31 +70,42 @@ public class GameManager : MonoBehaviour
             }
         }
         
-        if (SCStat && GameOnGoing && GameType == "stage02") 
+        if (GameOnGoing && GameType == "stage02") 
         {
         }
         
-        if (SCStat && GameOnGoing && GameType == "stage03")
+        if (GameOnGoing && GameType == "stage03")
         {
         }
     }
     
     void GetFile()
     {
-        if (Database.GetComponent<>(Database).ReadDataS("GameData", "Data", "status", 1) == "playing") {
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 1) == "playing") {
+            HP = 100; //default hp set
+            SC = 0; //default score set
+            HPBarI = HPBarCover.GetComponent<Image>(); //get hpbar
+            ScoreTextN = ScoreText.GetComponent<Text>(); //get score text
+            ScoreTextN.text = string.Format("{0:0}", SC); //score text format
+            HPBarI.fillAmount = 1;
+            Music01.SetActive(true); //music start
+            Background01.GetComponent<BgMovement>().Speed = 0.1f; //background start to move
             GameType = "ItemRush";
             GameOnGoing = true;
             SCStat = true;
+            LoadingPage.SetActive(false); //black screen turn off
         }
-        if (Database.GetComponent<>(Database).ReadDataS("GameData", "Data", "status", 1) == "playing") {
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 2) == "playing") {
             GameType = "stage02";
             GameOnGoing = true;
             SCStat = true;
+            LoadingPage.SetActive(false); //black screen turn off
         }
-        if (Database.GetComponent<>(Database).ReadDataS("GameData", "Data", "status", 1) == "playing") {
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 3) == "playing") {
             GameType = "stage03";
             GameOnGoing = true;
             SCStat = true;
+            LoadingPage.SetActive(false); //black screen turn off
         }
     }
 
@@ -116,9 +127,7 @@ public class GameManager : MonoBehaviour
         }
         else //if gameover
         {
-            GameOver.SetActive(true); //pull gameover screen
-            Music.SetActive(false); //music stop
-            Background.GetComponent<BgMovement>().Speed = 0f; //background movement stop
+            GameOver();
         }
     }
 
@@ -166,27 +175,41 @@ public class GameManager : MonoBehaviour
     
     public void GameOver()
     {
+        LoadingPage.SetActive(true); //black screen turn on
+        
+        if (GameType == "ItemRush")
+        {
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "status", "'done'");
+        }
+        if (GameType == "stage02")
+        {
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 2, "status", "'done'");
+        }
+        if (GameType == "stage03")
+        {
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 3, "status", "'done'");
+        }
+        
         SceneManager.LoadScene("GameOverScene"); //change to game over scene
     }
     
-    // DELATE BELOW 
-    // DELATE DELOW
-    // DELATE BELOW 
-    
-    public void Restart() //if press restart button
+    public void OptionMenu()
     {
-        HP = 100; //default hp set
-        SC = 0; //default score set
-        SCStat = true; //let the game bagan
-        GameOver.SetActive(false); //turn off gameover page
-        Music.SetActive(true); //music start
-        Background.GetComponent<BgMovement>().Speed = 0.1f; //background start to move
-        ScoreTextN.text = string.Format("{0:0}", SC); //score
-        GameOverTextN.text = string.Format("{0:0}", SC);
-        HPBarI.fillAmount = 1; //hpbar set to 100%
+        GameOnGoing = false;
+        OptionArea.SetActvie(true);
     }
-    public void Return() //if press return button
+    
+    public void ResumeGame()
     {
-        SceneManager.LoadScene("TitleScene"); //change to title scene
+        OptionArea.SetActive(false);
+    }
+    
+    public void HowToPlay()
+    {
+    }
+    
+    public void ReturnToLobby()
+    {
+        SceneManager.LoadScene("TitleScene"); //send to tile scene
     }
 }
