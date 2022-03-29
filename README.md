@@ -17,8 +17,6 @@ This game supports Window/Mac/Linux platform only (check before download). Downl
 | --- | ------ |
 | A | Move Left |
 | D | Move Right |
-| R | Resume Game |
-| T | Pause Game |
 | Left Arrow | Move Left |
 | Right Arrow | Move Right |
 
