@@ -8,18 +8,18 @@ public class GameManager : MonoBehaviour
 {
     public GameObject Player; //player
     public GameObject Database; //database
-    
+
     public GameObject HPBarCover; //hpbar
     public GameObject ScoreText; //score
-    
+
     public GameObject Music01; //game music 01
     public GameObject Music02;
     public GameObject Music03;
-    
+
     public GameObject Background01; //background 01
     public GameObject Background02;
     public GameObject Background03;
-    
+
     public GameObject LoadingPage; //black screen
     public GameObject OptionArea; //option area
 
@@ -41,18 +41,18 @@ public class GameManager : MonoBehaviour
     {
         LoadingPage.SetActive(true); //black screen turn on when start
     }
-    
+
     void Update()
     {
-        if (!SCStat) 
+        if (!SCStat)
         {
             GetFile(); //get game file
         }
-        
-        if (GameOnGoing && GameType == "ItemRush") 
+
+        if (GameOnGoing && GameType == "ItemRush")
         {
             Game(); //let the game began
-            
+
             if (DamageB) //if damage boolen triggered (on)
             {
                 DamageB = false; //damage boolen turn off
@@ -71,19 +71,20 @@ public class GameManager : MonoBehaviour
                 Point(1000f);
             }
         }
-        
-        if (GameOnGoing && GameType == "stage02") 
+
+        if (GameOnGoing && GameType == "stage02")
         {
         }
-        
+
         if (GameOnGoing && GameType == "stage03")
         {
         }
     }
-    
+
     void GetFile()
     {
-        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 1) == "playing") {
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 1) == "playing")
+        {
             HP = 100; //default hp set
             SC = 0; //default score set
             HPBarI = HPBarCover.GetComponent<Image>(); //get hpbar
@@ -97,13 +98,15 @@ public class GameManager : MonoBehaviour
             SCStat = true;
             LoadingPage.SetActive(false); //black screen turn off
         }
-        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 2) == "playing") {
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 2) == "playing")
+        {
             GameType = "stage02";
             GameOnGoing = true;
             SCStat = true;
             LoadingPage.SetActive(false); //black screen turn off
         }
-        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 3) == "playing") {
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 3) == "playing")
+        {
             GameType = "stage03";
             GameOnGoing = true;
             SCStat = true;
@@ -169,11 +172,11 @@ public class GameManager : MonoBehaviour
         SC += point; //add point
         ScoreTextN.text = string.Format("{0}", SC); //score set
     }
-    
+
     public void GameOver()
     {
         LoadingPage.SetActive(true); //black screen turn on
-        
+
         if (GameType == "ItemRush")
         {
             Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "score, status", SC + ", 'done'");
@@ -186,26 +189,26 @@ public class GameManager : MonoBehaviour
         {
             Database.GetComponent<Database>().UpdateData("GameData", "Data", 3, "score, status", SC + ", 'done'");
         }
-        
+
         SceneManager.LoadScene("GameOverScene"); //change to game over scene
     }
-    
+
     public void OptionMenu()
     {
         GameOnGoing = false;
-        OptionArea.SetActvie(true);
+        OptionArea.SetActive(true);
     }
-    
+
     public void ResumeGame()
     {
         GameOnGoing = true;
         OptionArea.SetActive(false);
     }
-    
+
     public void HowToPlay()
     {
     }
-    
+
     public void ReturnToLobby()
     {
         SceneManager.LoadScene("TitleScene"); //send to tile scene
