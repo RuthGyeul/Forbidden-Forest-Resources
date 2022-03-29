@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject ScoreText; //score
     
     public GameObject Music01; //game music 01
+    public GameObject Music02;
+    public GameObject Music03;
     
     public GameObject Background01; //background 01
     public GameObject Background02;
@@ -117,7 +119,6 @@ public class GameManager : MonoBehaviour
             SCStat = false; //game is over (turn off game)
             HPBarI.fillAmount = 0; //hpbar set to 0%
             ScoreTextN.text = string.Format("{0}", SC); //set score
-            GameOverTextN.text = string.Format("{0}", SC); //set gameover score
         }
 
         if (SCStat == true) //if game is on
@@ -139,7 +140,6 @@ public class GameManager : MonoBehaviour
             SCStat = false;
             HPBarI.fillAmount = 0;
             ScoreTextN.text = string.Format("{0}", SC);
-            GameOverTextN.text = string.Format("{0}", SC);
         }
         else
         {
@@ -155,14 +155,12 @@ public class GameManager : MonoBehaviour
             HP = 100;
             HPBarI.fillAmount = 1;
             ScoreTextN.text = string.Format("{0}", SC);
-            GameOverTextN.text = string.Format("{0}", SC);
         }
         else
         {
             HP += (heal * 100);
             HPBarI.fillAmount += heal;
             ScoreTextN.text = string.Format("{0:0}", SC);
-            GameOverTextN.text = string.Format("{0:0}", SC);
         }
     }
 
@@ -170,7 +168,6 @@ public class GameManager : MonoBehaviour
     {
         SC += point; //add point
         ScoreTextN.text = string.Format("{0}", SC); //score set
-        GameOverTextN.text = string.Format("{0}", SC);
     }
     
     public void GameOver()
