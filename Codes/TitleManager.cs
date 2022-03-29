@@ -14,24 +14,24 @@ public class TitleManager : MonoBehaviour
     public GameObject Description; //info des area
     public GameObject DReturn_Key; //return to title
 
-    public Text Title;
-    public string TitleText = "FORBIDDEN FOREST";
-    public float TextSpeed = 0.2f;
+    public Text Title; //title box
+    public string TitleText = "FORBIDDEN FOREST"; //title text
+    public float TextSpeed = 0.2f; //text typing speed
 
     void Start() //when start
     { 
         BackGround.SetActive(true); //background on
         ButtonArea.SetActive(true); //button area on
         InfoArea.SetActive(false); //turn off info(tutorial) area
-        StartCoroutine(Typing(Title, TitleText, TextSpeed));
+        StartCoroutine(Typing(Title, TitleText, TextSpeed)); //start typing coroutine
     }
 
     IEnumerator Typing(Text textBox, string msg, float speed)
     {
         for (int i = 0; i < msg.Length; i++)
         {
-            textBox.text = msg.Substring(0, i + 1);
-            yield return new WaitForSeconds(speed);
+            textBox.text = msg.Substring(0, i + 1); //start type by single letter at a time
+            yield return new WaitForSeconds(speed); //wait for speed control
         }
 
     }
