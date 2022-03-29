@@ -19,6 +19,7 @@ public class GameOverManager : MonoBehaviour
     public GameObject NewScore;
     
     float BS = 0;
+    float BSU = 0;
     float SC = 0;
     
     Text BestST;
@@ -26,19 +27,78 @@ public class GameOverManager : MonoBehaviour
     
     void Start()
     {
-        BestST = BestScore.GetComponent<Text>(); //get bestscore text
-        BestST.text = string.Format("{0:0}", BS); //best score text format
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 1) == "done")
+        {
+            BS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 4);
+            SC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 1); 
             
-        int bestS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 4);
-        int newS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 1);
-    }
-    
-    void Update()
-    {
+            NewST = NewScore.GetComponent<Text>(); //get score text
+            NewST.text = string.Format("{0:0}", SC); //score text format
+            
+            if (SC > BS) {
+                Database.GetComponent<Databse>().UpdateData("GameData", "Data", 4, "score", SC);
+                BSU = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 4);
+                BestST = BestScore.GetComponent<Text>(); 
+                BestST.text = string.Format("{0:0}", BSU);
+            } else {
+                BestST = BestScore.GetComponent<Text>();
+                BestST.text = string.Format("{0:0}", BSU);
+            }
+         }
+         
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 2) == "done")
+        {
+            BS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 5);
+            SC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 2); 
+            
+            NewST = NewScore.GetComponent<Text>(); //get score text
+            NewST.text = string.Format("{0:0}", SC); //score text format
+            
+            if (SC > BS) {
+                Database.GetComponent<Databse>().UpdateData("GameData", "Data", 5, "score", SC);
+                BSU = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 5);
+                BestST = BestScore.GetComponent<Text>(); 
+                BestST.text = string.Format("{0:0}", BSU);
+            } else {
+                BestST = BestScore.GetComponent<Text>();
+                BestST.text = string.Format("{0:0}", BSU);
+            }
+        }
+         
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 3) == "done")
+        {
+            BS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 6);
+            SC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 3); 
+            
+            NewST = NewScore.GetComponent<Text>(); //get score text
+            NewST.text = string.Format("{0:0}", SC); //score text format
+            
+            if (SC > BS) {
+                Database.GetComponent<Databse>().UpdateData("GameData", "Data", 6, "score", SC);
+                BSU = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 6);
+                BestST = BestScore.GetComponent<Text>(); 
+                BestST.text = string.Format("{0:0}", BSU);
+            } else {
+                BestST = BestScore.GetComponent<Text>();
+                BestST.text = string.Format("{0:0}", BSU);
+            }
+         }
     }
     
     void Reset()
     {
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 1) == "done")
+        {
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "score, status", "0, 'playing'");
+        }
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 2) == "done")
+        {
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 2, "score, status", "0, 'playing'");
+        }
+        if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 3) == "done")
+        {
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 3, "score, status", "0, 'playing'");
+        }
     }
     
     public void Restart()
