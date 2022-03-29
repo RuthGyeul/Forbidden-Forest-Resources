@@ -10,7 +10,7 @@ public class DropBehavior : MonoBehaviour
 
     void Update()
     {
-        if (DropT) //if obj is allow to drop
+        if (DropT && GameManager.GetComponent<GameManager>().GameOnGoing) //if obj is allow to drop
         {
             Drop(); //drop it
         }
