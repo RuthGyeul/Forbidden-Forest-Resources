@@ -12,10 +12,10 @@ public class PlayerControl : MonoBehaviour
    
     void Update()
     {
-        Movement(); //move
+        ActiveKey(); //active key
     }
 
-    public void Movement()
+    public void ActiveKey()
     {
         rigid = GetComponent<Rigidbody2D>(); //get rigid
         rend = GetComponent<SpriteRenderer>(); //get renerer
