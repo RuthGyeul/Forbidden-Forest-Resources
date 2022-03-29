@@ -13,13 +13,15 @@ public class TitleManager : MonoBehaviour
     public GameObject InfoArea; //info area
     public GameObject Description; //info des area
     public GameObject DReturn_Key; //return to title
+    
+    public GameObject Database; //database
 
     public Text Title; //title box
     public string TitleText = "FORBIDDEN FOREST"; //title text
     public float TextSpeed = 0.2f; //text typing speed
 
     void Start() //when start
-    { 
+    {
         BackGround.SetActive(true); //background on
         ButtonArea.SetActive(true); //button area on
         InfoArea.SetActive(false); //turn off info(tutorial) area
@@ -35,9 +37,20 @@ public class TitleManager : MonoBehaviour
         }
     }
 
-    public void StartK() //if press start
+    public void StartK01() //if press stage01
     {
+        Database.GetComponent<Database>().UpdateData('GameData', 'Data', 1, 'status', 'playing'); //file ready
         SceneManager.LoadScene("LoadingScene"); //change to loading scene
+    }
+    public void StartK02() //if press stage02
+    {
+        Database.GetComponent<Database>().UpdateData('GameData', 'Data', 2, 'status', 'playing');
+        SceneManager.LoadScene("LoadingScene");
+    }
+    public void StartK03() //if press stage03
+    {
+        Database.GetComponent<Database>().UpdateData('GameData', 'Data', 3, 'status', 'playing');
+        SceneManager.LoadScene("LoadingScene");
     }
     public void OptionK() //if press tutorial 
     {
