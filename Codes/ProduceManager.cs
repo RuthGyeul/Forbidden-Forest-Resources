@@ -12,7 +12,7 @@ public class ProduceManager : MonoBehaviour
 
     void Update() 
     {
-        if (produceB && GameManager.GetComponent<GameManager>().SCStat)
+        if (produceB && GameManager.GetComponent<GameManager>().SCStat && GameManager.GetComponent<GameManager>().GameOnGoing)
         {
             produceB = false; //set false
             StartCoroutine("Produce"); //start produce coroutine
