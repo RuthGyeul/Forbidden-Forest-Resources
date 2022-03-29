@@ -27,7 +27,7 @@ public class Database : MonoBehaviour
         dbconn.Open();
         IDbCommand dbcmd;
         dbcmd = dbconn.CreateCommand();
-        string tableQuery = "CREATE TABLE IF NOT EXISTS Data(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT DEFAULT 'Player'  NOT NULL, score INTEGER DEFAULT '0' NOT NULL)";
+        string tableQuery = "CREATE TABLE IF NOT EXISTS Data(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, score INTEGER DEFAULT '0' NOT NULL, status TEXT DEFAULT 'ready')";
         dbcmd.CommandText = tableQuery;
         dbcmd.ExecuteScalar();
         dbconn.Close();
