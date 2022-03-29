@@ -198,6 +198,7 @@ public class GameManager : MonoBehaviour
     
     public void ResumeGame()
     {
+        GameOnGoing = true;
         OptionArea.SetActive(false);
     }
     
