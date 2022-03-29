@@ -34,4 +34,20 @@ public class GameOverManager : MonoBehaviour
         int bestS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 4);
         int newS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 1);
     }
+    
+    void Reset()
+    {
+    }
+    
+    public void Restart()
+    {
+        Reset();
+        SceneManager.LoadScene("LoadingScene");
+    }
+    
+    public void ReturnToLobby()
+    {
+        Reset();
+        SceneManager.LoadScene("TitleScene");
+    }
 }
