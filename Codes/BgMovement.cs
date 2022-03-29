@@ -5,7 +5,7 @@ using UnityEngine;
 public class BgMovement : MonoBehaviour
 {
     public string Direction = "H"; //background move direction
-    public float Speed = 1f; //background move speed
+    public float Speed = 0.1f; //background move speed
     new Renderer renderer; //set renderer
     float move; //set move
     
