@@ -27,6 +27,10 @@ public class GameOverManager : MonoBehaviour
     
     void Update()
     {
+    HPBarI = HPBarCover.GetComponent<Image>(); //get hpbar
+            ScoreTextN = ScoreText.GetComponent<Text>(); //get score text
+            ScoreTextN.text = string.Format("{0:0}", SC); //score text format
+            
         int bestS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 4);
         int newS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 1);
     }
