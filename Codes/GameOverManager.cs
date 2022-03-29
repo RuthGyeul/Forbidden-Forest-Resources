@@ -18,21 +18,23 @@ public class GameOverManager : MonoBehaviour
     public GameObject BestScore;
     public GameObject NewScore;
     
+    float BS = 0;
+    float SC = 0;
+    
     Text BestST;
     Text NewST;
     
     void Start()
     {
+        BestST = BestScore.GetComponent<Text>(); //get bestscore text
+        BestST.text = string.Format("{0:0}", BS); //best score text format
+            
+        int bestS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 4);
+        int newS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 1);
     }
     
     void Update()
     {
-    HPBarI = HPBarCover.GetComponent<Image>(); //get hpbar
-            ScoreTextN = ScoreText.GetComponent<Text>(); //get score text
-            ScoreTextN.text = string.Format("{0:0}", SC); //score text format
-            
-        int bestS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 4);
-        int newS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 1);
     }
     
     void Reset()
