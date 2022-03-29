@@ -33,7 +33,6 @@ public class TitleManager : MonoBehaviour
             textBox.text = msg.Substring(0, i + 1); //start type by single letter at a time
             yield return new WaitForSeconds(speed); //wait for speed control
         }
-
     }
 
     public void StartK() //if press start
