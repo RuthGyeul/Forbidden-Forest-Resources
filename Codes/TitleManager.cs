@@ -27,7 +27,7 @@ public class TitleManager : MonoBehaviour
         ButtonArea.SetActive(true); //button area on
         InfoArea.SetActive(false); //turn off info(tutorial) area
         StageArea.SetActive(false); //turn off stage area
-        Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "score, status", "0, 'ready'");
+        Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "score, status, cc, hc, dc", "0, 'ready', 0, 0, 0");
         Database.GetComponent<Database>().UpdateData("GameData", "Data", 2, "score, status", "0, 'ready'");
         Database.GetComponent<Database>().UpdateData("GameData", "Data", 3, "score, status", "0, 'ready'");
         StartCoroutine(Typing(Title, TitleText, TextSpeed)); //start typing coroutine
