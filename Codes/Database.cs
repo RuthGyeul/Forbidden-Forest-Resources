@@ -1,64 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Mono.Data.Sqlite;
 using System.Data;
 using System.IO;
-using UnityEngine.Networking;
 
 public class Database : MonoBehaviour
 {
-    string dbName;
-
     void Start()
     {
-        CreatePlayerTable("GameData");
+        CheckFile("GameData"); //check if file exist
     }
 
-    private void CreatePlayerTable(string dbPath)
+    private void CheckFile(string dbPath)
     {
-        string conn = Application.dataPath + "/" + dbPath + ".db";
-        if (!File.Exists(conn))
+        string path = Application.dataPath + "/" + dbPath + ".db"; //original file path
+        if (!File.Exists(path)) //if file doesn't exist on file path
         {
-            File.Copy(Application.streamingAssetsPath + "/Default_" + dbPath + ".db", conn);
+            File.Copy(Application.streamingAssetsPath + "/Default_" + dbPath + ".db", path); //copy original file to file path
         }
-        IDbConnection dbconn;
-        dbconn = new SqliteConnection("URI=file:" + conn);
-        dbconn.Open();
-        IDbCommand dbcmd;
-        dbcmd = dbconn.CreateCommand();
-        string tableQuery = "CREATE TABLE IF NOT EXISTS Data(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, score INTEGER DEFAULT '0' NOT NULL, status TEXT DEFAULT 'ready')";
-        dbcmd.CommandText = tableQuery;
-        dbcmd.ExecuteScalar();
-        dbconn.Close();
     }
 
-    public void WriteData(string dbPath, string dataSP, string dataColumn, string inputData)
+    public void WriteData(string dbPath, string dataSP, string dataColumn, string inputData) //write data
     {
-        string conn = Application.dataPath + "/" + dbPath + ".db";
-        if (!File.Exists(conn))
-        {
-            File.Copy(Application.streamingAssetsPath + "/Default_" + dbPath + ".db", conn);
-        }
-        IDbConnection dbconn;
-        dbconn = new SqliteConnection("URI=file:" + conn);
-        dbconn.Open();
-        IDbCommand dbcmdW = dbconn.CreateCommand();
-        string insertQuery = "INSERT INTO " + dataSP + "(" + dataColumn + ") VALUES(" + inputData + ")";
-        dbcmdW.CommandText = insertQuery;
-        dbcmdW.ExecuteScalar();
-        dbconn.Close();
+        string path = Application.dataPath + "/" + dbPath + ".db"; //file path
+        CheckFile(dbPath); //check if file exist
+        IDbConnection dbconn; //connect file
+        dbconn = new SqliteConnection("URI=file:" + path); //connect to sql db
+        dbconn.Open(); //open file
+        IDbCommand dbcmdW = dbconn.CreateCommand(); //creat command
+        string insertQuery = "INSERT INTO " + dataSP + "(" + dataColumn + ") VALUES(" + inputData + ")"; //input command
+        dbcmdW.CommandText = insertQuery; //process command
+        dbcmdW.ExecuteScalar(); //done
+        dbconn.Close(); //close it
     }
 
-    public void UpdateData(string dbPath, string dataSP, int id, string columnType, string newData)
+    public void UpdateData(string dbPath, string dataSP, int id, string columnType, string newData) //update data
     {
-        string conn = Application.dataPath + "/" + dbPath + ".db";
-        if (!File.Exists(conn))
-        {
-            File.Copy(Application.streamingAssetsPath + "/Default_" + dbPath + ".db", conn);
-        }
+        string path = Application.dataPath + "/" + dbPath + ".db";
+        CheckFile(dbPath);
         IDbConnection dbconn;
-        dbconn = new SqliteConnection("URI=file:" + conn);
+        dbconn = new SqliteConnection("URI=file:" + path);
         dbconn.Open();
         IDbCommand dbcmdU = dbconn.CreateCommand();
         string updateQuery = "UPDATE " + dataSP + " SET(" + columnType + ") = (" + newData + ") WHERE id = " + id;
@@ -67,15 +47,12 @@ public class Database : MonoBehaviour
         dbconn.Close();
     }
 
-    public void DelateData(string dbPath, string dataSP, int id)
+    public void DelateData(string dbPath, string dataSP, int id) //delate data
     {
-        string conn = Application.dataPath + "/" + dbPath + ".db";
-        if (!File.Exists(conn))
-        {
-            File.Copy(Application.streamingAssetsPath + "/Default_" + dbPath + ".db", conn);
-        }
+        string path = Application.dataPath + "/" + dbPath + ".db";
+        CheckFile(dbPath);
         IDbConnection dbconn;
-        dbconn = new SqliteConnection("URI=file:" + conn);
+        dbconn = new SqliteConnection("URI=file:" + path);
         dbconn.Open();
         IDbCommand dbcmdD = dbconn.CreateCommand();
         string delateQuery = "DELETE FROM " + dataSP + " WHERE ID = " + id;
@@ -84,20 +61,17 @@ public class Database : MonoBehaviour
         dbconn.Close();
     }
 
-    public int ReadDataI(string dbPath, string dataSP, string dataSelect, int rowID)
+    public int ReadDataI(string dbPath, string dataSP, string dataSelect, int rowID) //read int data
     {
         int resultD = 0;
-        string conn = Application.dataPath + "/" + dbPath + ".db";
-        if (!File.Exists(conn))
-        {
-            File.Copy(Application.streamingAssetsPath + "/Default_" + dbPath + ".db", conn);
-        }
+        string path = Application.dataPath + "/" + dbPath + ".db";
+        CheckFile(dbPath);
         IDbConnection dbconn;
-        dbconn = new SqliteConnection("URI=file:" + conn);
+        dbconn = new SqliteConnection("URI=file:" + path);
         dbconn.Open();
         IDbCommand dbcmdI = dbconn.CreateCommand();
-        string sqlQuery = "SELECT " + dataSelect + " FROM " + dataSP + " WHERE id=" + rowID;
-        dbcmdI.CommandText = sqlQuery;
+        string intReadQuery = "SELECT " + dataSelect + " FROM " + dataSP + " WHERE id=" + rowID;
+        dbcmdI.CommandText = intReadQuery;
         IDataReader reader = dbcmdI.ExecuteReader();
         while (reader.Read())
         {
@@ -106,19 +80,16 @@ public class Database : MonoBehaviour
         }
         dbconn.Close();
         Debug.Log(resultD);
-        return resultD;
+        return resultD; //return output
     }
 
-    public string ReadDataS(string dbPath, string dataSP, string dataSelect, int rowID)
+    public string ReadDataS(string dbPath, string dataSP, string dataSelect, int rowID) //read string data
     {
         string resultD = "";
-        string conn = Application.dataPath + "/" + dbPath + ".db";
-        if (!File.Exists(conn))
-        {
-            File.Copy(Application.streamingAssetsPath + "/Default_" + dbPath + ".db", conn);
-        }
+        string path = Application.dataPath + "/" + dbPath + ".db";
+        CheckFile(dbPath);
         IDbConnection dbconn;
-        dbconn = new SqliteConnection("URI=file:" + conn);
+        dbconn = new SqliteConnection("URI=file:" + path);
         dbconn.Open();
         IDbCommand dbcmdS = dbconn.CreateCommand();
         string sqlQuery = "SELECT " + dataSelect + " FROM " + dataSP + " WHERE id=" + rowID;
