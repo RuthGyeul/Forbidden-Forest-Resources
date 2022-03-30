@@ -10,7 +10,7 @@ public class ProduceManager : MonoBehaviour
     public float ProduceTime = 3f; //set produce time
     bool produceB = true; //determine rather produce item
 
-    void Update() 
+    void Update()
     {
         if (produceB && GameManager.GetComponent<GameManager>().SCStat && GameManager.GetComponent<GameManager>().GameOnGoing)
         {
