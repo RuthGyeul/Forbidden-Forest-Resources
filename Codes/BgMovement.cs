@@ -8,7 +8,7 @@ public class BgMovement : MonoBehaviour
     public float Speed = 0.1f; //background move speed
     new Renderer renderer; //set renderer
     float move; //set move
-    
+
     void Update()
     {
         renderer = GetComponent<Renderer>(); //get Renderer
