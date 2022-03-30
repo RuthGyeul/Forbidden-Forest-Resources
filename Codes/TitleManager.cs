@@ -10,11 +10,8 @@ public class TitleManager : MonoBehaviour
     public GameObject BackGround; //background
     public GameObject ButtonArea; //button area
     public GameObject StageArea; //stage area
-    public GameObject Start_Key; //start button
-    public GameObject Option_Key; //tutorial button
     public GameObject InfoArea; //info area
-    public GameObject Description; //info des area
-    public GameObject DReturn_Key; //return to title
+    public GameObject Description; //info description area
 
     public string TitleText = "FORBIDDEN FOREST"; //title text
     public float TextSpeed = 0.2f; //text typing speed
