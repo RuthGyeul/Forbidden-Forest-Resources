@@ -28,7 +28,9 @@ public class DropBehavior : MonoBehaviour
             {
                 Destroy(gameObject); //destroy it                    
             }
-        } else {
+        }
+        else
+        {
             Destroy(gameObject); //or destory all
         }
     }
