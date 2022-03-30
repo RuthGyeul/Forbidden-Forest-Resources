@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         CheckFile = false;
         NotAlive = false;
         GameOnGoing = false;
+        //DISABLE EVERYTHING HERE!!!!!!!
         LoadingPage.SetActive(true); //black screen turn on when start
     }
 
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         if (GameType == "ItemRush")
         {
             if (GameOnGoing) {
+            //PUT ALL MUSIC OR OBJECT SOURCE HERE!!!!!
                 Game(); //let the game began
 
                 if (DamageB) //if damage boolen triggered (on)
@@ -129,7 +131,7 @@ public class GameManager : MonoBehaviour
         if (HP <= 0) //if hp is 0 or down
         {
             HP = 0; //set hp 0
-            SCStat = false; //game is over (turn off game)
+            GameOnGoing = false;
             NotAlive = true;
             HPBarI.fillAmount = 0; //hpbar set to 0%
             ScoreTextN.text = string.Format("{0}", SC); //set score
