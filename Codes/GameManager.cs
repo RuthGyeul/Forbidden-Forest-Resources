@@ -195,6 +195,9 @@ public class GameManager : MonoBehaviour
         if (GameType == "ItemRush")
         {
             Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "score, status", SC + ", 'done'");
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "cc", Player.GetComponent<PlayerStat>().PointC.ToString());
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "hc", Player.GetComponent<PlayerStat>().HealC.ToString());
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "dc", Player.GetComponent<PlayerStat>().DamageC.ToString());
         }
         if (GameType == "stage02")
         {
