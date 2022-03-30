@@ -8,6 +8,7 @@ public class TitleManager : MonoBehaviour
 {
     public GameObject BackGround; //background
     public GameObject ButtonArea; //button area
+    public GameObject StageArea;
     public GameObject Start_Key; //start button
     public GameObject Option_Key; //tutorial button
     public GameObject InfoArea; //info area
@@ -25,6 +26,7 @@ public class TitleManager : MonoBehaviour
         BackGround.SetActive(true); //background on
         ButtonArea.SetActive(true); //button area on
         InfoArea.SetActive(false); //turn off info(tutorial) area
+        StageArea.SetActive(false); //turn off stage area
         Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "score, status", "0, 'ready'");
         Database.GetComponent<Database>().UpdateData("GameData", "Data", 2, "score, status", "0, 'ready'");
         Database.GetComponent<Database>().UpdateData("GameData", "Data", 3, "score, status", "0, 'ready'");
@@ -55,7 +57,11 @@ public class TitleManager : MonoBehaviour
         Database.GetComponent<Database>().UpdateData("GameData", "Data", 3, "status", "'playing'");
         SceneManager.LoadScene("LoadingScene");
     }
-    public void OptionK() //if press tutorial 
+    public void StageK() 
+    {
+        StageArea.SetActive(true);
+    }
+    public void OptionK() //when press tutorial 
     {
         ButtonArea.SetActive(false); //turn off button area
         InfoArea.SetActive(true); //pull tutorial area
