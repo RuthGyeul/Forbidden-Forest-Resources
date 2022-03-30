@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BgMovement : MonoBehaviour
@@ -13,11 +11,11 @@ public class BgMovement : MonoBehaviour
     {
         renderer = GetComponent<Renderer>(); //get Renderer
         move += Time.deltaTime * Speed; //set speed with time
-        if (Direction == "H")
+        if (Direction == "H") //if direction is "H"orizontal
         {
             renderer.material.mainTextureOffset = new Vector2(move, 0); //move background by x-axis
         }
-        if (Direction == "V")
+        if (Direction == "V") //if direction is "V"ertical
         {
             renderer.material.mainTextureOffset = new Vector2(0, move); //move background by y-axis
         }
