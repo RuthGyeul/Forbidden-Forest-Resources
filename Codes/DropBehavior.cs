@@ -18,7 +18,7 @@ public class DropBehavior : MonoBehaviour
 
     void Drop()
     {
-        if (GameManager.GetComponent<GameManager>().SCStat) //if game is ongoing
+        if (GameManager.GetComponent<GameManager>().NotAlive == false) //if Alive
         {
             Vector3 moveVelocity = Vector3.zero;
             moveVelocity = new Vector3(0, -0.25f, 0); //get object position
