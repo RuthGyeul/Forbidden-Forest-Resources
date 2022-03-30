@@ -1,36 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerStat : MonoBehaviour
 {
-    Rigidbody2D rigid; //get rigid
-    public GameObject Player; //get player
     public GameObject GameManager; //get gamemanager
 
-    public float PointC = 0;
-    public float HealC = 0;
-    public float DamageC = 0;
+    public float PointC = 0; //point gain count
+    public float HealC = 0; //heal gain count
+    public float DamageC = 0; //damage gain count
 
     GameManager GM;
 
     void Start()
     {
-        rigid = Player.GetComponent<Rigidbody2D>(); //get rigidbody2d
         GM = GameManager.GetComponent<GameManager>(); //get gamemanager component
-        PointC = 0;
+        PointC = 0; //reset to 0
         HealC = 0;
         DamageC = 0;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) //if trigger
+    private void OnTriggerEnter2D(Collider2D collision) //if trigger with an object
     {
         if (collision.CompareTag("Damage")) //if object tag is damage
         {
             GM.DamageB = true; //set gamemanager's DamageB boolen to true
-            DamageC++; //count how many damage got triggered
-            Destroy(collision.gameObject); //Destory the triggered object
+            DamageC++; //count the triggered object
+            Destroy(collision.gameObject); //destory the triggered object
         }
         if (collision.CompareTag("Heal"))
         {
