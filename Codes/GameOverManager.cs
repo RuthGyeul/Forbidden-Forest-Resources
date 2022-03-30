@@ -45,7 +45,7 @@ public class GameOverManager : MonoBehaviour
             else
             {
                 BestST = BestScore.GetComponent<Text>();
-                BestST.text = string.Format("{0:0}", BSU);
+                BestST.text = string.Format("{0:0}", BS);
             }
         }
 
