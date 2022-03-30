@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     public bool PointB = false; //point trigger
 
     public string GameType = ""; //determine game types
-    public bool SCStat = false; //determine rather game is ongoing or not
-    public bool NotAlive = true; //determin blah blah
+    public bool CheckFile = false; //determine rather game is ongoing or not
+    public bool NotAlive = false; //determin blah blah
     public bool GameOnGoing = false; //determine rather game is pause or not
 
     float HP = 100; //default hp
@@ -40,7 +40,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        CheckFile = false;
         NotAlive = false;
+        GameOnGoing = false;
         LoadingPage.SetActive(true); //black screen turn on when start
     }
 
@@ -50,40 +52,42 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-
-        if (!SCStat && NotAlive == false)
+        
+        if (!CheckFile)
         {
             GetFile(); //get game file
         }
 
-        if (GameOnGoing && GameType == "ItemRush" && NotAlive == false)
+        if (GameType == "ItemRush")
         {
-            Game(); //let the game began
+            if (GameOnGoing) {
+                Game(); //let the game began
 
-            if (DamageB) //if damage boolen triggered (on)
-            {
-                DamageB = false; //damage boolen turn off
-                Damage(0.25f); //give damage
-                Point(-2000f); //change score
-            }
-            if (HealB)
-            {
-                HealB = false;
-                Heal(0.1f);
-                Point(500f);
-            }
-            if (PointB)
-            {
-                PointB = false;
-                Point(1000f);
+                if (DamageB) //if damage boolen triggered (on)
+                {
+                    DamageB = false; //damage boolen turn off
+                    Damage(0.25f); //give damage
+                    Point(-2000f); //change score
+                }
+                if (HealB)
+                {
+                    HealB = false;
+                    Heal(0.1f);
+                    Point(500f);
+                }
+                if (PointB)
+                {
+                    PointB = false;
+                    Point(1000f);
+                }
             }
         }
 
-        if (GameOnGoing && GameType == "stage02" && NotAlive == false)
+        if (GameType == "stage02")
         {
         }
 
-        if (GameOnGoing && GameType == "stage03" && NotAlive == false)
+        if (GameType == "stage03")
         {
         }
     }
@@ -98,25 +102,24 @@ public class GameManager : MonoBehaviour
             ScoreTextN = ScoreText.GetComponent<Text>(); //get score text
             ScoreTextN.text = string.Format("{0:0}", SC); //score text format
             HPBarI.fillAmount = 1;
-            Music01.SetActive(true); //music start
             Background01.GetComponent<BgMovement>().Speed = 0.1f; //background start to move
             GameType = "ItemRush";
+            CheckFile = true;
             GameOnGoing = true;
-            SCStat = true;
             LoadingPage.SetActive(false); //black screen turn off
         }
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 2) == "playing")
         {
             GameType = "stage02";
+            CheckFile = true;
             GameOnGoing = true;
-            SCStat = true;
             LoadingPage.SetActive(false); //black screen turn off
         }
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 3) == "playing")
         {
             GameType = "stage03";
+            CheckFile = true;
             GameOnGoing = true;
-            SCStat = true;
             LoadingPage.SetActive(false); //black screen turn off
         }
     }
@@ -132,16 +135,15 @@ public class GameManager : MonoBehaviour
             ScoreTextN.text = string.Format("{0}", SC); //set score
         }
 
-        if (SCStat == true) //if game is on
+        if (NotAlive == false) //if alive
         {
             Point(1f); //gain 1 point per frame
             Damage(0.0005f); //loose 0.0005f hp per fram
         }
         else //if gameover
         {
-            SCStat = false;
+            GameOnGoing = false;
             NotAlive = true;
-            GameOver();
         }
     }
 
@@ -150,9 +152,10 @@ public class GameManager : MonoBehaviour
         if (HP - (damage * 100) <= 0) //if hp is same or lower than 0 (same code from game() function)
         {
             HP = 0;
-            SCStat = false;
             HPBarI.fillAmount = 0;
             ScoreTextN.text = string.Format("{0}", SC);
+            GameOnGoing = false;
+            NotAlive = true;
         }
         else
         {
@@ -185,7 +188,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        SCStat = false;
         LoadingPage.SetActive(true); //black screen turn on
 
         if (GameType == "ItemRush")
