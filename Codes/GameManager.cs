@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     public string GameType = ""; //determine game types
     public bool SCStat = false; //determine rather game is ongoing or not
+    public bool NotAlive = true; //determin blah blah
     public bool GameOnGoing = false; //determine rather game is pause or not
 
     float HP = 100; //default hp
@@ -39,17 +40,23 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        NotAlive = false;
         LoadingPage.SetActive(true); //black screen turn on when start
     }
 
     void Update()
     {
-        if (!SCStat)
+        if (NotAlive)
+        {
+            GameOver();
+        }
+
+        if (!SCStat && NotAlive == false)
         {
             GetFile(); //get game file
         }
 
-        if (GameOnGoing && GameType == "ItemRush")
+        if (GameOnGoing && GameType == "ItemRush" && NotAlive == false)
         {
             Game(); //let the game began
 
@@ -72,11 +79,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (GameOnGoing && GameType == "stage02")
+        if (GameOnGoing && GameType == "stage02" && NotAlive == false)
         {
         }
 
-        if (GameOnGoing && GameType == "stage03")
+        if (GameOnGoing && GameType == "stage03" && NotAlive == false)
         {
         }
     }
@@ -120,6 +127,7 @@ public class GameManager : MonoBehaviour
         {
             HP = 0; //set hp 0
             SCStat = false; //game is over (turn off game)
+            NotAlive = true;
             HPBarI.fillAmount = 0; //hpbar set to 0%
             ScoreTextN.text = string.Format("{0}", SC); //set score
         }
@@ -131,6 +139,8 @@ public class GameManager : MonoBehaviour
         }
         else //if gameover
         {
+            SCStat = false;
+            NotAlive = true;
             GameOver();
         }
     }
@@ -175,6 +185,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        SCStat = false;
         LoadingPage.SetActive(true); //black screen turn on
 
         if (GameType == "ItemRush")
