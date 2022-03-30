@@ -9,9 +9,9 @@ public class PlayerStat : MonoBehaviour
     public GameObject Player; //get player
     public GameObject GameManager; //get gamemanager
 
-    float PointC = 0;
-    float HealC = 0;
-    float DamageC = 0;
+    public float PointC = 0;
+    public float HealC = 0;
+    public float DamageC = 0;
 
     GameManager GM;
 
