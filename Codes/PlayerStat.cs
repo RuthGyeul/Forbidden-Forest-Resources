@@ -19,6 +19,9 @@ public class PlayerStat : MonoBehaviour
     {
         rigid = Player.GetComponent<Rigidbody2D>(); //get rigidbody2d
         GM = GameManager.GetComponent<GameManager>(); //get gamemanager component
+        PointC = 0;
+        HealC = 0;
+        DamageC = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) //if trigger
