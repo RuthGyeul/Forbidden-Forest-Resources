@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameOverManager : MonoBehaviour
 {
     public GameObject Database;
-
+    
     public GameObject BestScoreTag;
     public GameObject PointS;
     public GameObject PointA;
@@ -21,16 +21,36 @@ public class GameOverManager : MonoBehaviour
     float BS = 0;
     float BSU = 0;
     float SC = 0;
+    
+    float CC = 0;
+    float HC = 0;
+    float DC = 0;
 
     Text BestST;
     Text NewST;
 
     void Start()
     {
+        BestScoreTag.SetActive(false);
+        PointS.SetActive(false);
+        PointA.SetActive(false);
+        PointB.SetActive(false);
+        PointC.SetActive(false);
+        PointD.SetActive(false);
+        
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 1) == "done")
         {
             BS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 4);
             SC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 1);
+            CC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "cc", 1);
+            HC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "hc", 1);
+            DC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "dc", 1);
+            
+            float PTime = (SC - (CC*100 + HC*100))/1000; //play time (s)
+            float PAvgCoin = CC/PTime; //coin per second
+            float PAvgDamage = DC/PTime; //damage per second
+            float PTotalHeal = HC*20; //total heal recieved
+            float PTotalDamage = DC*100; //total damage recieved
 
             NewST = NewScore.GetComponent<Text>(); //get score text
             NewST.text = string.Format("{0:0}", SC); //score text format
@@ -38,14 +58,39 @@ public class GameOverManager : MonoBehaviour
             if (SC > BS)
             {
                 Database.GetComponent<Database>().UpdateData("GameData", "Data", 4, "score", SC.ToString());
+                Database.GetComponent<Database>().UpdateData("GameData", "Data", 4, "cc", CC.ToString());
+                Database.GetComponent<Database>().UpdateData("GameData", "Data", 4, "hc", HC.ToString());
+                Database.GetComponent<Database>().UpdateData("GameData", "Data", 4, "dc", DC.ToString());
                 BSU = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", 4);
                 BestST = BestScore.GetComponent<Text>();
                 BestST.text = string.Format("{0:0}", BSU);
+                BestScoreTag.SetActive(true);
             }
             else
             {
                 BestST = BestScore.GetComponent<Text>();
                 BestST.text = string.Format("{0:0}", BS);
+            }
+            
+            if (PAvgDamage <= ) 
+            {
+                PointS.SetActive(true);
+            }
+            else if (PAvgDamage)
+            {
+                PointA.SetActive(true);
+            }
+            else if (PAvgDamage)
+            {
+                PointB.SetActive(true);
+            }
+            else if (PAvgDamage)
+            {
+                PointC.SetActive(true);
+            }
+            else
+            {
+                PointD.SetActive(true);
             }
         }
 
@@ -67,7 +112,7 @@ public class GameOverManager : MonoBehaviour
             else
             {
                 BestST = BestScore.GetComponent<Text>();
-                BestST.text = string.Format("{0:0}", BSU);
+                BestST.text = string.Format("{0:0}", BS);
             }
         }
 
@@ -89,16 +134,20 @@ public class GameOverManager : MonoBehaviour
             else
             {
                 BestST = BestScore.GetComponent<Text>();
-                BestST.text = string.Format("{0:0}", BSU);
+                BestST.text = string.Format("{0:0}", BS);
             }
         }
+    }
+    
+    void Detail()
+    {
     }
 
     void Reset()
     {
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 1) == "done")
         {
-            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "score, status", "0, 'playing'");
+            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "score, status, cc, hc, dc", "0, 'playing', 0, 0, 0");
         }
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 2) == "done")
         {
