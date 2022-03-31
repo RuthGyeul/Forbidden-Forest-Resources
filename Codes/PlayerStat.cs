@@ -42,7 +42,7 @@ public class PlayerStat : MonoBehaviour
         if (collision.CompareTag("Lava"))
         {
             GM.FloorExcutionB = true;
-            FloorControl.GetComponent<FloorControl>().???;
+            FloorControl.GetComponent<FloorControl>().ImOnLava = true;
         }
     }
 }
