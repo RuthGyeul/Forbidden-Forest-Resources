@@ -190,6 +190,22 @@ public class GameOverManager : MonoBehaviour
     void SetDetail()
     {
         DSCT = DSC.GetComponent<Text>();
+        DCCT
+        DHCT
+        DDCT
+        DBSCT
+        DBCCT
+        DBHCT
+        DBDCT
+        
+        DSGI;
+        DCGI;
+        DHGI;
+        DDGI;
+        DBSGI;
+        DBCGI;
+    Image DBHGI;
+    Image DBDGI;
         
         DSCT.text = string.Format("{0:0}", 0);
     }
