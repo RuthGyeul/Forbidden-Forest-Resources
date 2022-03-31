@@ -24,9 +24,9 @@ This game supports Window/Mac/Linux platform only (check before download). Downl
 - New keys
 - Game pause and resume
 - Database system
-- 2 new stages
-- few new items
+- 2 new level added
 - few UI changed
+- improved game over scene
 
 
 ## License
