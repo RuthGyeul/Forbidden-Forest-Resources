@@ -42,6 +42,7 @@ public class GameOverManager : MonoBehaviour
 
     int stage = 0;
     int stageB = 0;
+    int stPointOff = 0;
 
     float BS = 0;
     float BSU = 0;
@@ -76,7 +77,6 @@ public class GameOverManager : MonoBehaviour
     Image DBCGI;
     Image DBHGI;
     Image DBDGI;
-    
 
     void Start()
     {
@@ -92,16 +92,19 @@ public class GameOverManager : MonoBehaviour
         {
             stage = 1;
             stageB = 4;
+            stPointOff = 0;
         }
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 2) == "done")
         {
             stage = 2;
             stageB = 5;
+            stPointOff = 10000;
         }
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 3) == "done")
         {
             stage = 3;
             stageB = 6;
+            stPointOff = 20000;
         }
 
         BS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", stageB);
