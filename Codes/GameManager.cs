@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject Player; //player
     public GameObject Database; //database
+    public GameObject FloorControl; //control floor
 
     public GameObject HPBarCover; //hpbar
     public GameObject ScoreText; //score
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject Music02; //game music 02
     public GameObject Music03; //game music 03
 
-    public GameObject Background01; //background 01
+    public GameObject MainBackground; //background 01
     public GameObject Background02; //background 02
     public GameObject Background03; //background 03
 
@@ -26,8 +27,10 @@ public class GameManager : MonoBehaviour
     public bool DamageB = false; //damage trigger
     public bool HealB = false; //heal trigger
     public bool PointB = false; //point trigger
+    public bool FloorExcutionB = false; //floor excution trigger
 
     public string GameType = ""; //determine game types
+    public int GameTypeI = 0; //determine game int types
     public bool CheckFile = false; //determine rather game is ongoing or not
     public bool NotAlive = false; //determin blah blah
     public bool GameOnGoing = false; //determine rather game is pause or not
@@ -43,9 +46,13 @@ public class GameManager : MonoBehaviour
         CheckFile = false;
         NotAlive = false;
         GameOnGoing = false;
-        //DISABLE EVERYTHING HERE!!!!!!!
+        Music01.SetActive(false);
+        Music02.SetActive(false);
+        Music03.SetActive(false);
+        MainBackground.SetActive(false);
+        Background02.SetActive(false);
+        Background03.SetActive(false);
         OptionArea.SetActive(false);
-
         LoadingPage.SetActive(true); //black screen turn on when start
     }
 
@@ -60,13 +67,16 @@ public class GameManager : MonoBehaviour
         {
             GetFile(); //get game file
         }
-
-        if (GameType == "ItemRush")
+        
+        if (GameOnGoing)
         {
-            if (GameOnGoing)
+            MainBackground.SetActive(true);
+            Game(); //let the game began
+            
+            if (GameType == "stage01")
             {
-                //PUT ALL MUSIC OR OBJECT SOURCE HERE!!!!!
-                Game(); //let the game began
+                Background01.GetComponent<BgMovement>().Speed = 0.1f;
+                Music01.SetActive(true);
 
                 if (DamageB) //if damage boolen triggered (on)
                 {
@@ -86,45 +96,110 @@ public class GameManager : MonoBehaviour
                     Point(1000f);
                 }
             }
+            
+            if (GameType == "stage02")
+            {
+                MainBackground.GetComponent<BgMovement>().Speed = 0.2f;
+                Music02.SetActive(true);
+                Background02.SetActive(true);
+                
+                if (DamageB) //if damage boolen triggered (on)
+                {
+                    DamageB = false; //damage boolen turn off
+                    Damage(0.3f); //give damage
+                    Point(-2500f); //change score
+                }
+                if (HealB)
+                {
+                    HealB = false;
+                    Heal(0.1f);
+                    Point(500f);
+                }
+                if (PointB)
+                {
+                    PointB = false;
+                    Point(2000f);
+                }
+            }
+            
+            if (GameType == "stage03")
+            {
+                MainBackground.GetComponent<BgMovement>().Speed = 0.3f;
+                Music03.SetActive(true);
+                Background03.SetActive(true);
+                
+                if (DamageB) //if damage boolen triggered (on)
+                {
+                    DamageB = false; //damage boolen turn off
+                    Damage(0.3f); //give damage
+                    Point(-3000f); //change score
+                }
+                if (HealB)
+                {
+                    HealB = false;
+                    Heal(0.1f);
+                    Point(250f);
+                }
+                if (PointB)
+                {
+                    PointB = false;
+                    Point(3000f);
+                }
+                if (FloorExcutionB)
+                {
+                    FloorExcutionB = false;
+                    Damage(1f); //excute player
+                }
+            }
         }
-
-        if (GameType == "stage02")
+        else
         {
-        }
-
-        if (GameType == "stage03")
-        {
+            MainBackground.GetComponent<BgMovement>().Speed = 0f;
+            Music01.SetActive(false);
+            Music02.SetActive(false);
+            Music03.SetActive(false);
         }
     }
 
     void GetFile()
     {
+        HP = 100; //default hp set
+        SC = 0; //default score set
+        HPBarI = HPBarCover.GetComponent<Image>(); //get hpbar
+        ScoreTextN = ScoreText.GetComponent<Text>(); //get score text
+        ScoreTextN.text = string.Format("{0:0}", SC); //score text format
+        HPBarI.fillAmount = 1;
+        
+        MainBackground.SetActive(true);
+        
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 1) == "playing")
         {
-            HP = 100; //default hp set
-            SC = 0; //default score set
-            HPBarI = HPBarCover.GetComponent<Image>(); //get hpbar
-            ScoreTextN = ScoreText.GetComponent<Text>(); //get score text
-            ScoreTextN.text = string.Format("{0:0}", SC); //score text format
-            HPBarI.fillAmount = 1;
             Background01.GetComponent<BgMovement>().Speed = 0.1f; //background start to move
-            GameType = "ItemRush";
+            GameType = "stage01";
+            GameTypeI = 1;
             CheckFile = true;
             GameOnGoing = true;
+            Music01.SetActive(true);
             LoadingPage.SetActive(false); //black screen turn off
         }
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 2) == "playing")
         {
             GameType = "stage02";
+            GameTypeI = 2;
             CheckFile = true;
             GameOnGoing = true;
+            Music02.SetActive(true);
+            Background02.SetActive(true);
             LoadingPage.SetActive(false); //black screen turn off
         }
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 3) == "playing")
         {
             GameType = "stage03";
+            GameTypeI = 3;
             CheckFile = true;
             GameOnGoing = true;
+            Music03.SetActive(true);
+            Background03.SetActive(true);
             LoadingPage.SetActive(false); //black screen turn off
         }
     }
@@ -198,22 +273,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         LoadingPage.SetActive(true); //black screen turn on
-
-        if (GameType == "ItemRush")
-        {
-            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "score, status", SC + ", 'done'");
-            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "cc", Player.GetComponent<PlayerStat>().PointC.ToString());
-            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "hc", Player.GetComponent<PlayerStat>().HealC.ToString());
-            Database.GetComponent<Database>().UpdateData("GameData", "Data", 1, "dc", Player.GetComponent<PlayerStat>().DamageC.ToString());
-        }
-        if (GameType == "stage02")
-        {
-            Database.GetComponent<Database>().UpdateData("GameData", "Data", 2, "score, status", SC + ", 'done'");
-        }
-        if (GameType == "stage03")
-        {
-            Database.GetComponent<Database>().UpdateData("GameData", "Data", 3, "score, status", SC + ", 'done'");
-        }
+        Database.GetComponent<Database>().UpdateData("GameData", "Data", GameTypeI, "score, status", SC + ", 'done'");
+        Database.GetComponent<Database>().UpdateData("GameData", "Data", GameTypeI, "cc", Player.GetComponent<PlayerStat>().PointC.ToString());
+        Database.GetComponent<Database>().UpdateData("GameData", "Data", GameTypeI, "hc", Player.GetComponent<PlayerStat>().HealC.ToString());
+        Database.GetComponent<Database>().UpdateData("GameData", "Data", GameTypeI, "dc", Player.GetComponent<PlayerStat>().DamageC.ToString());
 
         SceneManager.LoadScene("GameOverScene"); //change to game over scene
     }
