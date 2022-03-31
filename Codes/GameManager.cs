@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public GameObject Player; //player
     public GameObject Database; //database
-    public GameObject FloorControl; //control floor
 
     public GameObject HPBarCover; //hpbar
     public GameObject ScoreText; //score
