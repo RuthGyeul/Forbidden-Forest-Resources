@@ -19,6 +19,28 @@ public class GameOverManager : MonoBehaviour
 
     public GameObject BestScore;
     public GameObject NewScore;
+    
+    public GameObject DSC; //score
+    public GameObject DCC; //coin count
+    public GameObject DHC; //heal count
+    public GameObject DDC; //damage count
+    
+    public GameObject DBSC; //Best score
+    public GameObject DBCC; //best coin count
+    public GameObject DBHC; //best heal count
+    public GameObject DBDC; //best damage count
+    
+    public GameObject DSG; //score graph
+    public GameObject DCG; //coin count graph
+    public GameObject DHG; //heal count graph
+    public GameObject DDG; //damage count graph
+    
+    public GameObject DBSG; //Best score
+    public GameObject DBCG; //best coin count
+    public GameObject DBHG; //best heal count
+    public GameObject DBDG; //best damage count
+    
+    public GameObject 
 
     int stage = 0;
     int stageB = 0;
@@ -33,6 +55,27 @@ public class GameOverManager : MonoBehaviour
 
     Text BestST;
     Text NewST;
+    
+    Text DSCT;
+    Text DCCT;
+    Text DHCT;
+    Text DDCT; 
+    
+    Text DBSCT;
+    Text DBCCT;
+    Text DBHCT;
+    Text DBDCT;
+    
+    Image DSGI;
+    Image DCGI;
+    Image DHGI;
+    Image DDGI;
+    
+    Image DBSGI;
+    Image DBCGI;
+    Image DBHGI;
+    Image DBDGI;
+    
 
     void Start()
     {
@@ -67,15 +110,13 @@ public class GameOverManager : MonoBehaviour
         DC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "dc", stage);
         
         float PTime = (SC - (CC * 100 + HC * 100)) / 1000;
-        float PAvgCoin = CC / PTime;
-        float PAvgDamage = DC / PTime;
-        float PTotalHeal = HC * 20;
-        float PTotalDamage = DC * 100;
         
         NewST = NewScore.GetComponent<Text>();
         BestST = BestScore.GetComponent<Text>();
         NewST.text = string.Format("{0:0}", 0);
         BestST.text = string.Format("{0:0}", 0);
+        
+        SetDetail();
 
         StartCoroutine(StartCount("score", SC, 0, 2));
         
@@ -144,6 +185,13 @@ public class GameOverManager : MonoBehaviour
         {
             BestST.text = string.Format("{0:0}", count);
         }
+    }
+    
+    void SetDetail()
+    {
+        DSCT = DSC.GetComponent<Text>();
+        
+        DSCT.text = string.Format("{0:0}", 0);
     }
 
     void Reset()
