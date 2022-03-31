@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
     public GameObject ScoreText; //score
 
     public GameObject Music01; //game music 01
-    public GameObject Music02;
-    public GameObject Music03;
+    public GameObject Music02; //game music 02
+    public GameObject Music03; //game music 03
 
     public GameObject Background01; //background 01
-    public GameObject Background02;
-    public GameObject Background03;
+    public GameObject Background02; //background 02
+    public GameObject Background03; //background 03
 
     public GameObject LoadingPage; //black screen
     public GameObject OptionArea; //option area
@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
         NotAlive = false;
         GameOnGoing = false;
         //DISABLE EVERYTHING HERE!!!!!!!
+        OptionArea.SetActive(false);
+
         LoadingPage.SetActive(true); //black screen turn on when start
     }
 
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-        
+
         if (!CheckFile)
         {
             GetFile(); //get game file
@@ -61,8 +63,9 @@ public class GameManager : MonoBehaviour
 
         if (GameType == "ItemRush")
         {
-            if (GameOnGoing) {
-            //PUT ALL MUSIC OR OBJECT SOURCE HERE!!!!!
+            if (GameOnGoing)
+            {
+                //PUT ALL MUSIC OR OBJECT SOURCE HERE!!!!!
                 Game(); //let the game began
 
                 if (DamageB) //if damage boolen triggered (on)
@@ -134,7 +137,6 @@ public class GameManager : MonoBehaviour
             GameOnGoing = false;
             NotAlive = true;
             HPBarI.fillAmount = 0; //hpbar set to 0%
-            ScoreTextN.text = string.Format("{0}", SC); //set score
         }
 
         if (NotAlive == false) //if alive
@@ -155,7 +157,6 @@ public class GameManager : MonoBehaviour
         {
             HP = 0;
             HPBarI.fillAmount = 0;
-            ScoreTextN.text = string.Format("{0}", SC);
             GameOnGoing = false;
             NotAlive = true;
         }
@@ -172,20 +173,26 @@ public class GameManager : MonoBehaviour
         {
             HP = 100;
             HPBarI.fillAmount = 1;
-            ScoreTextN.text = string.Format("{0}", SC);
         }
         else
         {
             HP += (heal * 100);
             HPBarI.fillAmount += heal;
-            ScoreTextN.text = string.Format("{0:0}", SC);
         }
     }
 
     void Point(float point)
     {
         SC += point; //add point
-        ScoreTextN.text = string.Format("{0}", SC); //score set
+        if (SC < 0)
+        {
+            SC = 0; //set to 0
+            ScoreTextN.text = string.Format("{0}", SC); //score set
+        }
+        else
+        {
+            ScoreTextN.text = string.Format("{0}", SC); //score set
+        }
     }
 
     public void GameOver()
