@@ -7,9 +7,9 @@ public class FloorControl : MonoBehaviour
 {
     public GameObject GameManager;
     
-    public GameObject[] GrassObj = new GameObject[7];
-    public GameObject[] BurnGrassObj = new GameObject[7];
-    public GameObject[] LavaObj = new GameObject[7];
+    public GameObject[] GrassObj = new GameObject[8];
+    public GameObject[] BurnGrassObj = new GameObject[8];
+    public GameObject[] LavaObj = new GameObject[8];
     
     public GameObject Grass;
     public GameObject Grass01;
@@ -76,7 +76,7 @@ public class FloorControl : MonoBehaviour
     
     IEnumerator Sinkhole()
     {
-        int ran = Random.Range(0, 7);
+        int ran = Random.Range(0, 8);
         
         for (int i = 0; i <= 10; i++)
         {
