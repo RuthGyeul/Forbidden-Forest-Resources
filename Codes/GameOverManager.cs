@@ -116,8 +116,6 @@ public class GameOverManager : MonoBehaviour
         HC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "hc", stage);
         DC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "dc", stage);
         
-        float PTime = (SC - (CC * 100 + HC * 100)) / 1000;
-        
         NewST = NewScore.GetComponent<Text>();
         BestST = BestScore.GetComponent<Text>();
         NewST.text = string.Format("{0:0}", 0);
@@ -236,6 +234,21 @@ public class GameOverManager : MonoBehaviour
     void Reset()
     {
         Database.GetComponent<Database>().UpdateData("GameData", "Data", stage, "score, status, cc, hc, dc", "0, 'playing', 0, 0, 0");
+        
+        stage = 0;
+        stageB = 0;
+        stPointOff = 0;
+        
+        BS = 0;
+        BSU = 0;
+        BCC = 0;
+        BHC = 0;
+        BDC = 0;
+        
+        SC = 0;
+        CC = 0;
+        HC = 0;
+        DC = 0;
     }
 
     public void Detail()
