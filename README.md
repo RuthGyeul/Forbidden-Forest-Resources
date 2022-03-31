@@ -2,7 +2,7 @@
 
 
 # [Project Forbidden Forest](https://github.com/RuthGyeul/Forbidden-Forest-Resources)
-A 2D RPG item collecting game. Try to reach the highest score by eating coins while avoiding dangerous rice cake dinamite who wants to hug you!
+A 2D RPG item collecting game. Try to reach the highest score by eating coins while avoiding dangerous rice cake dinamite who wants to hug you! Also challenge yourself by trying extreme mode!
 
 
 ## Versions
