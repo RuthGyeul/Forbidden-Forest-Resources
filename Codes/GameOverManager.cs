@@ -38,11 +38,11 @@ public class GameOverManager : MonoBehaviour
     {
         DetailArea.SetActive(false);
         BestScoreTag.SetActive(false);
-        //PointS.SetActive(false);
-        //PointA.SetActive(false);
-        //PointB.SetActive(false);
-        //PointC.SetActive(false);
-        //PointD.SetActive(false);
+        PointS.SetActive(false);
+        PointA.SetActive(false);
+        PointB.SetActive(false);
+        PointC.SetActive(false);
+        PointD.SetActive(false);
 
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 1) == "done")
         {
@@ -95,27 +95,26 @@ public class GameOverManager : MonoBehaviour
             StartCoroutine(StartCount("best", BS, 0, 2));
         }
         
-        /*
-        if (PAvgDamage <= 0)
+        if (SC >= (200000 - stPointOff))
         {
             PointS.SetActive(true);
         }
-        else if (PAvgDamage <= 0)
+        else if (SC >= (150000 - stPointOff) && SC < (200000 - stPointOff))
         {
             PointA.SetActive(true);
         }
-        else if (PAvgDamage <= 0)
+        else if (SC >= (100000 - stPointOff) && SC < (150000 - stPointOff))
         {
             PointB.SetActive(true);
         }
-        else if (PAvgDamage <= 0)
+        else if (SC >= (70000 - stPointOff) && SC < (100000 - stPointOff))
         {
             PointC.SetActive(true);
         }
         else
         {
             PointD.SetActive(true);
-        }*/
+        }
     }
 
     IEnumerator StartCount(string type, float target, float count, float duration)
