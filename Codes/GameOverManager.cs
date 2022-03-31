@@ -39,8 +39,6 @@ public class GameOverManager : MonoBehaviour
     public GameObject DBCG; //best coin count
     public GameObject DBHG; //best heal count
     public GameObject DBDG; //best damage count
-    
-    public GameObject 
 
     int stage = 0;
     int stageB = 0;
