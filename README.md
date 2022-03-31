@@ -2,7 +2,7 @@
 
 
 # [Project Forbidden Forest](https://github.com/RuthGyeul/Forbidden-Forest-Resources)
-A 2D RPG item collecting game. Try to reach the highest score by eating coins while avoiding dangerous rice cake dinamite who wants to hug you! Also challenge yourself by trying extreme mode!
+A 2D RPG item collecting game. Try to reach the highest score by eating coins while avoiding dangerous rice-cake dinamite who wants to hug you!
 
 
 ## Versions
@@ -10,6 +10,15 @@ A 2D RPG item collecting game. Try to reach the highest score by eating coins wh
 - 1.1.0 - Official Release / [Window](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/Window/Forbidden_Forest_Window_1.1.0.zip) & [MacOS](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/MacOS/Forbidden_Forest_MacOS_1.1.0.zip) & [Linux](https://github.com/RuthGyeul/Forbidden-Forest-Resources/releases/download/Linux/Forbidden_Forest_Linux_1.1.0.zip)
 - 2.0.0_Best - Beta Version / Released To Team Undefined Testers Only
 - 2.0.0 - Official Release / [Window]()
+
+
+## 2.0: What's New?
+- New keys (now able to use arrow keys)
+- Game pause and resume
+- Database system (can store your best score)
+- 2 new level added (hard, extreme)
+- few UI changed (text typing animation, )
+- improved game over scene (best score, able to see detail of result)
 
 
 ## How to play
@@ -21,13 +30,7 @@ This game supports Window/Mac/Linux platform only (check before download). Downl
 | Left Arrow | Move Left |
 | Right Arrow | Move Right |
 
-## 2.0: What's New?
-- New keys
-- Game pause and resume
-- Database system
-- 2 new level added
-- few UI changed
-- improved game over scene
+## Game Play
 
 
 ## License
