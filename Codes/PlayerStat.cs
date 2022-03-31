@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerStat : MonoBehaviour
 {
     public GameObject GameManager; //get gamemanager
+    public GameObject FloorControl; //get floor contorl
 
     public float PointC = 0; //point gain count
     public float HealC = 0; //heal gain count
@@ -37,6 +38,11 @@ public class PlayerStat : MonoBehaviour
             GM.PointB = true;
             PointC++;
             Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("Lava"))
+        {
+            GM.FloorExcutionB = true;
+            FloorControl.GetComponent<FloorControl>().???;
         }
     }
 }
