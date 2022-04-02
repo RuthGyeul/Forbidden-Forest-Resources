@@ -7,8 +7,6 @@ public class GameOverManager : MonoBehaviour
 {
     public GameObject Database;
 
-    public GameObject DetailArea;
-
     public GameObject BestScoreTag;
     public GameObject PointS;
     public GameObject PointA;
@@ -19,25 +17,9 @@ public class GameOverManager : MonoBehaviour
     public GameObject BestScore;
     public GameObject NewScore;
 
-    public GameObject DSC; //score
     public GameObject DCC; //coin count
     public GameObject DHC; //heal count
     public GameObject DDC; //damage count
-
-    public GameObject DBSC; //Best score
-    public GameObject DBCC; //best coin count
-    public GameObject DBHC; //best heal count
-    public GameObject DBDC; //best damage count
-
-    public GameObject DSG; //score graph
-    public GameObject DCG; //coin count graph
-    public GameObject DHG; //heal count graph
-    public GameObject DDG; //damage count graph
-
-    public GameObject DBSG; //Best score
-    public GameObject DBCG; //best coin count
-    public GameObject DBHG; //best heal count
-    public GameObject DBDG; //best damage count
 
     int stage = 0;
     int stageB = 0;
@@ -45,9 +27,6 @@ public class GameOverManager : MonoBehaviour
 
     float BS = 0;
     float BSU = 0;
-    float BCC = 0;
-    float BHC = 0;
-    float BDC = 0;
 
     float SC = 0;
     float CC = 0;
@@ -57,29 +36,12 @@ public class GameOverManager : MonoBehaviour
     Text BestST;
     Text NewST;
 
-    Text DSCT;
     Text DCCT;
     Text DHCT;
     Text DDCT;
 
-    Text DBSCT;
-    Text DBCCT;
-    Text DBHCT;
-    Text DBDCT;
-
-    Image DSGI;
-    Image DCGI;
-    Image DHGI;
-    Image DDGI;
-
-    Image DBSGI;
-    Image DBCGI;
-    Image DBHGI;
-    Image DBDGI;
-
     void Start()
     {
-        DetailArea.SetActive(false);
         BestScoreTag.SetActive(false);
         PointS.SetActive(false);
         PointA.SetActive(false);
@@ -107,9 +69,6 @@ public class GameOverManager : MonoBehaviour
         }
 
         BS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", stageB);
-        BCC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "cc", stageB);
-        BHC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "hc", stageB);
-        BDC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "dc", stageB);
         SC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", stage);
         CC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "cc", stage);
         HC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "hc", stage);
@@ -120,7 +79,7 @@ public class GameOverManager : MonoBehaviour
         NewST.text = string.Format("{0:0}", 0);
         BestST.text = string.Format("{0:0}", 0);
 
-        //SetDetail();
+        SetDetail();
 
         StartCoroutine(StartCount("score", SC, 0, 2));
 
@@ -191,46 +150,15 @@ public class GameOverManager : MonoBehaviour
         }
     }
 
-    /*
     void SetDetail()
     {
-        DSCT = DSC.GetComponent<Text>();
         DCCT = DCC.GetComponent<Text>();
         DHCT = DHC.GetComponent<Text>();
         DDCT = DDC.GetComponent<Text>();
-        DBSCT = DBSC.GetComponent<Text>();
-        DBCCT = DBCC.GetComponent<Text>();
-        DBHCT = DBHC.GetComponent<Text>();
-        DBDCT = DBDC.GetComponent<Text>();
-
-        DSCT.text = string.Format("{0:0}", SC);
         DCCT.text = string.Format("{0:0}", CC);
         DHCT.text = string.Format("{0:0}", HC);
         DDCT.text = string.Format("{0:0}", DC);
-        DBSCT.text = string.Format("{0:0}", BS);
-        DBCCT.text = string.Format("{0:0}", BCC);
-        DBHCT.text = string.Format("{0:0}", BHC);
-        DBDCT.text = string.Format("{0:0}", BDC);
-
-        DSGI = DSG.GetComponent<Image>();
-        DCGI = DCG.GetComponent<Image>();
-        DHGI = DHG.GetComponent<Image>();
-        DDGI = DDG.GetComponent<Image>();
-        DBSGI = DBSG.GetComponent<Image>();
-        DBCGI = DBCG.GetComponent<Image>();
-        DBHGI = DBHG.GetComponent<Image>();
-        DBDGI = DBDG.GetComponent<Image>();
-
-        DSGI.fillAmount = 1;
-        DCGI.fillAmount = 1;
-        DHGI.fillAmount = 1;
-        DDGI.fillAmount = 1;
-        DBSGI.fillAmount = 1;
-        DBCGI.fillAmount = 1;
-        DBHGI.fillAmount = 1;
-        DBDGI.fillAmount = 1;
     }
-    */
 
     void Reset()
     {
@@ -242,24 +170,11 @@ public class GameOverManager : MonoBehaviour
 
         BS = 0;
         BSU = 0;
-        BCC = 0;
-        BHC = 0;
-        BDC = 0;
 
         SC = 0;
         CC = 0;
         HC = 0;
         DC = 0;
-    }
-
-    public void Detail()
-    {
-        DetailArea.SetActive(true);
-    }
-
-    public void Return()
-    {
-        DetailArea.SetActive(false);
     }
 
     public void Restart()
