@@ -1,57 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class FloorControl : MonoBehaviour
 {
     public GameObject GameManager;
-    
-    public GameObject[] GrassObj = new GameObject[8];
-    public GameObject[] BurnGrassObj = new GameObject[8];
-    public GameObject[] LavaObj = new GameObject[8];
-    
+
+    public GameObject[] GrassObj = new GameObject[5];
+    public GameObject[] BurnGrassObj = new GameObject[5];
+    public GameObject[] LavaObj = new GameObject[5];
+
     public GameObject Grass;
-    public GameObject Grass01;
-    public GameObject Grass02;
-    public GameObject Grass03;
-    public GameObject Grass04;
-    public GameObject Grass05;
-    public GameObject Grass06;
-    public GameObject Grass07;
-    
+
     public GameObject BurnGrass;
-    public GameObject BurnGrass01;
-    public GameObject BurnGrass02;
-    public GameObject BurnGrass03;
-    public GameObject BurnGrass04;
-    public GameObject BurnGrass05;
-    public GameObject BurnGrass06;
-    public GameObject BurnGrass07;
-    
+
     public GameObject Lava;
-    public GameObject Lava01;
-    public GameObject Lava02;
-    public GameObject Lava03;
-    public GameObject Lava04;
-    public GameObject Lava05;
-    public GameObject Lava06;
-    public GameObject Lava07;
-    
+
     public bool CreateSinkhole = false;
     public bool ImOnLava = false;
-    public float LavaDuration = 5.0f;
-    
+
+    public int oldN = 0;
+    public int newN = 0;
+    public float time = 0;
+    public float btime = 0.1f;
+    public float xtime = 0;
+    public float waittime = 0.2f;
+
     GameManager GM;
-    
+
     void Start()
     {
         GM = GameManager.GetComponent<GameManager>();
-        Lava.SetActive(false);
         BurnGrass.SetActive(true);
         Grass.SetActive(true);
+        LavaObj[0].SetActive(false);
+        LavaObj[1].SetActive(false);
+        LavaObj[2].SetActive(false);
+        LavaObj[3].SetActive(false);
+        LavaObj[4].SetActive(false);
     }
-    
+
     void Update()
     {
         if (GM.GameOnGoing && GM.NotAlive == false)
@@ -59,36 +45,56 @@ public class FloorControl : MonoBehaviour
             if (ImOnLava)
             {
                 ImOnLava = false;
-                StopCoroutine("Sinkhole");
                 BurnGrass.SetActive(true);
                 Grass.SetActive(true);
-                Lava.SetActive(false);
                 CreateSinkhole = true;
             }
-            
+
             if (CreateSinkhole)
             {
                 CreateSinkhole = false;
-                StartCoroutine("Sinkhole");
+                DigSinkhole();
             }
         }
     }
-    
-    IEnumerator Sinkhole()
+
+    void DigSinkhole()
     {
-        int ran = Random.Range(0, 8);
-        
-        for (int i = 0; i <= 10; i++)
+        if (time < 4f)
         {
-            GrassObj[ran].SetActive(false);
-            BurnGrassObj[ran].SetActive(true);
-            GrassObj[ran].SetActive(true);
-            BurnGrassObj[ran].SetActive(false);
+            newN = Random.Range(0, 5);
         }
-        GrassObj[ran].SetActive(false);
-        LavaObj[ran].SetActive(true);
-        BurnGrassObj[ran].SetActive(false);
-        yield return new WaitForSeconds(LavaDuration);
-        CreateSinkhole = true;
+        else // 약 3초
+        {
+            BurnGrassObj[oldN].SetActive(true);
+            LavaObj[oldN].SetActive(false);
+            GrassObj[oldN].SetActive(true);
+            oldN = newN;
+            if (xtime < btime) // 깜빡
+            {
+                GrassObj[newN].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1 - xtime * 10); //꺼졌다가
+            }
+            else
+            {
+                GrassObj[newN].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, (xtime - (waittime + btime)) * 10);
+                //켜졌다가
+                if (xtime > waittime + btime * 2)
+                {
+                    xtime = 0;
+                    waittime *= 0.8f; //깜빡이는 시간 줄어들기
+                    if (waittime < 0.02f)
+                    {
+                        time = 0;
+                        waittime = 0.2f;
+                        LavaObj[newN].SetActive(true);
+                        GrassObj[newN].SetActive(false);
+                        BurnGrassObj[newN].SetActive(false);
+                        CreateSinkhole = true;
+                    }
+                }
+            }
+            xtime += Time.deltaTime;
+        }
+        time += Time.deltaTime;
     }
 }
