@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,22 +18,22 @@ public class GameOverManager : MonoBehaviour
 
     public GameObject BestScore;
     public GameObject NewScore;
-    
+
     public GameObject DSC; //score
     public GameObject DCC; //coin count
     public GameObject DHC; //heal count
     public GameObject DDC; //damage count
-    
+
     public GameObject DBSC; //Best score
     public GameObject DBCC; //best coin count
     public GameObject DBHC; //best heal count
     public GameObject DBDC; //best damage count
-    
+
     public GameObject DSG; //score graph
     public GameObject DCG; //coin count graph
     public GameObject DHG; //heal count graph
     public GameObject DDG; //damage count graph
-    
+
     public GameObject DBSG; //Best score
     public GameObject DBCG; //best coin count
     public GameObject DBHG; //best heal count
@@ -49,7 +48,7 @@ public class GameOverManager : MonoBehaviour
     float BCC = 0;
     float BHC = 0;
     float BDC = 0;
-    
+
     float SC = 0;
     float CC = 0;
     float HC = 0;
@@ -57,22 +56,22 @@ public class GameOverManager : MonoBehaviour
 
     Text BestST;
     Text NewST;
-    
+
     Text DSCT;
     Text DCCT;
     Text DHCT;
-    Text DDCT; 
-    
+    Text DDCT;
+
     Text DBSCT;
     Text DBCCT;
     Text DBHCT;
     Text DBDCT;
-    
+
     Image DSGI;
     Image DCGI;
     Image DHGI;
     Image DDGI;
-    
+
     Image DBSGI;
     Image DBCGI;
     Image DBHGI;
@@ -115,16 +114,16 @@ public class GameOverManager : MonoBehaviour
         CC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "cc", stage);
         HC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "hc", stage);
         DC = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "dc", stage);
-        
+
         NewST = NewScore.GetComponent<Text>();
         BestST = BestScore.GetComponent<Text>();
         NewST.text = string.Format("{0:0}", 0);
         BestST.text = string.Format("{0:0}", 0);
-        
-        SetDetail();
+
+        //SetDetail();
 
         StartCoroutine(StartCount("score", SC, 0, 2));
-        
+
         if (SC > BS)
         {
             BestScoreTag.SetActive(true);
@@ -135,12 +134,12 @@ public class GameOverManager : MonoBehaviour
             BSU = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", stageB);
             StartCoroutine(StartCount("best", BSU, 0, 2));
             //best 갱신 시 기존 베스트는 화면에서 떨어트리고 새로운걸로 교체 에니메이션?
-        } 
-        else 
+        }
+        else
         {
             StartCoroutine(StartCount("best", BS, 0, 2));
         }
-        
+
         if (SC >= (200000 - stPointOff))
         {
             PointS.SetActive(true);
@@ -191,7 +190,8 @@ public class GameOverManager : MonoBehaviour
             BestST.text = string.Format("{0:0}", count);
         }
     }
-    
+
+    /*
     void SetDetail()
     {
         DSCT = DSC.GetComponent<Text>();
@@ -202,16 +202,16 @@ public class GameOverManager : MonoBehaviour
         DBCCT = DBCC.GetComponent<Text>();
         DBHCT = DBHC.GetComponent<Text>();
         DBDCT = DBDC.GetComponent<Text>();
-        
+
         DSCT.text = string.Format("{0:0}", SC);
         DCCT.text = string.Format("{0:0}", CC);
         DHCT.text = string.Format("{0:0}", HC);
         DDCT.text = string.Format("{0:0}", DC);
-        DBSCT.text = string.Format("{0:0}", BSC);
+        DBSCT.text = string.Format("{0:0}", BS);
         DBCCT.text = string.Format("{0:0}", BCC);
         DBHCT.text = string.Format("{0:0}", BHC);
         DBDCT.text = string.Format("{0:0}", BDC);
-        
+
         DSGI = DSG.GetComponent<Image>();
         DCGI = DCG.GetComponent<Image>();
         DHGI = DHG.GetComponent<Image>();
@@ -220,7 +220,7 @@ public class GameOverManager : MonoBehaviour
         DBCGI = DBCG.GetComponent<Image>();
         DBHGI = DBHG.GetComponent<Image>();
         DBDGI = DBDG.GetComponent<Image>();
-        
+
         DSGI.fillAmount = 1;
         DCGI.fillAmount = 1;
         DHGI.fillAmount = 1;
@@ -230,21 +230,22 @@ public class GameOverManager : MonoBehaviour
         DBHGI.fillAmount = 1;
         DBDGI.fillAmount = 1;
     }
+    */
 
     void Reset()
     {
         Database.GetComponent<Database>().UpdateData("GameData", "Data", stage, "score, status, cc, hc, dc", "0, 'playing', 0, 0, 0");
-        
+
         stage = 0;
         stageB = 0;
         stPointOff = 0;
-        
+
         BS = 0;
         BSU = 0;
         BCC = 0;
         BHC = 0;
         BDC = 0;
-        
+
         SC = 0;
         CC = 0;
         HC = 0;
