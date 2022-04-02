@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject Player; //player
     public GameObject Database; //database
+    public GameObject FloorControl;
 
     public GameObject HPBarCover; //hpbar
     public GameObject ScoreText; //score
@@ -66,15 +65,15 @@ public class GameManager : MonoBehaviour
         {
             GetFile(); //get game file
         }
-        
+
         if (GameOnGoing)
         {
             MainBackground.SetActive(true);
             Game(); //let the game began
-            
+
             if (GameType == "stage01")
             {
-                Background01.GetComponent<BgMovement>().Speed = 0.1f;
+                MainBackground.GetComponent<BgMovement>().Speed = 0.1f;
                 Music01.SetActive(true);
 
                 if (DamageB) //if damage boolen triggered (on)
@@ -87,21 +86,21 @@ public class GameManager : MonoBehaviour
                 {
                     HealB = false;
                     Heal(0.1f);
-                    Point(500f);
+                    Point(5000f);
                 }
                 if (PointB)
                 {
                     PointB = false;
-                    Point(1000f);
+                    Point(10000f);
                 }
             }
-            
+
             if (GameType == "stage02")
             {
                 MainBackground.GetComponent<BgMovement>().Speed = 0.2f;
                 Music02.SetActive(true);
                 Background02.SetActive(true);
-                
+
                 if (DamageB) //if damage boolen triggered (on)
                 {
                     DamageB = false; //damage boolen turn off
@@ -120,13 +119,14 @@ public class GameManager : MonoBehaviour
                     Point(2000f);
                 }
             }
-            
+
             if (GameType == "stage03")
             {
                 MainBackground.GetComponent<BgMovement>().Speed = 0.3f;
+                FloorControl.GetComponent<FloorControl>().CreateSinkhole = true;
                 Music03.SetActive(true);
                 Background03.SetActive(true);
-                
+
                 if (DamageB) //if damage boolen triggered (on)
                 {
                     DamageB = false; //damage boolen turn off
@@ -168,12 +168,11 @@ public class GameManager : MonoBehaviour
         ScoreTextN = ScoreText.GetComponent<Text>(); //get score text
         ScoreTextN.text = string.Format("{0:0}", SC); //score text format
         HPBarI.fillAmount = 1;
-        
+
         MainBackground.SetActive(true);
-        
+
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 1) == "playing")
         {
-            Background01.GetComponent<BgMovement>().Speed = 0.1f; //background start to move
             GameType = "stage01";
             GameTypeI = 1;
             CheckFile = true;
