@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
     public void ActiveKey()
     {
         rigid = GetComponent<Rigidbody2D>(); //get rigid
-        rend = GetComponent<SpriteRenderer>(); //get renerer
+        rend = GetComponent<SpriteRenderer>(); //get renderer
         playerPosition = ClampPosition(this.transform.position); //get player position & position limit
 
         if (GM.GameOnGoing) //if game is not paused let the key move
