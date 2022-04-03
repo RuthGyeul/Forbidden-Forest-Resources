@@ -42,7 +42,7 @@ public class PlayerStat : MonoBehaviour
         if (collision.CompareTag("Lava"))
         {
             GM.FloorExcutionB = true;
-            FloorControl.GetComponent<FloorControl>().ImOnLava = true;
+            FloorControl.GetComponent<FloorControl>().ImOnLava = true; //let floorcontrol know that player is on lava
         }
     }
 }
