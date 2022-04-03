@@ -17,8 +17,9 @@ A 2D RPG item collecting game. Try to reach the highest score by eating coins wh
 - Game pause and resume
 - Database system (can store your best score)
 - 2 new level added (hard, extreme)
-- few UI changed (text typing animation, )
+- few UI changed (text typing animation)
 - improved game over scene (best score, able to see detail of result)
+- Able to control in-game volumes
 
 
 ## How to play
