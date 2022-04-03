@@ -291,10 +291,6 @@ public class GameManager : MonoBehaviour
         OptionArea.SetActive(false);
     }
 
-    public void HowToPlay()
-    {
-    }
-
     public void ReturnToLobby()
     {
         SceneManager.LoadScene("TitleScene"); //send to tile scene
