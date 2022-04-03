@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject Music02; //game music 02
     public GameObject Music03; //game music 03
 
-    public GameObject MainBackground; //background 01
+    public GameObject MainBackground; //main background 01
+    public GameObject MainBackground03; //main background 03
     public GameObject Background02; //background 02
     public GameObject Background03; //background 03
 
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
         Music02.SetActive(false);
         Music03.SetActive(false);
         MainBackground.SetActive(false);
+        MainBackground03.SetActive(false);
         Background02.SetActive(false);
         Background03.SetActive(false);
         OptionArea.SetActive(false);
@@ -79,19 +81,19 @@ public class GameManager : MonoBehaviour
                 if (DamageB) //if damage boolen triggered (on)
                 {
                     DamageB = false; //damage boolen turn off
-                    Damage(0.25f); //give damage
+                    Damage(0.2f); //give damage
                     Point(-2000f); //change score
                 }
                 if (HealB)
                 {
                     HealB = false;
-                    Heal(0.1f);
-                    Point(5000f);
+                    Heal(0.15f);
+                    Point(500f);
                 }
                 if (PointB)
                 {
                     PointB = false;
-                    Point(10000f);
+                    Point(1500f);
                 }
             }
 
@@ -116,15 +118,17 @@ public class GameManager : MonoBehaviour
                 if (PointB)
                 {
                     PointB = false;
-                    Point(2000f);
+                    Point(1500f);
                 }
             }
 
             if (GameType == "stage03")
             {
-                MainBackground.GetComponent<BgMovement>().Speed = 0.3f;
+                MainBackground03.GetComponent<BgMovement>().Speed = 0.3f;
                 FloorControl.GetComponent<FloorControl>().CreateSinkhole = true;
                 Music03.SetActive(true);
+                MainBackground.SetActive(false);
+                MainBackground03.SetActive(true);
                 Background03.SetActive(true);
 
                 if (DamageB) //if damage boolen triggered (on)
@@ -142,18 +146,19 @@ public class GameManager : MonoBehaviour
                 if (PointB)
                 {
                     PointB = false;
-                    Point(3000f);
+                    Point(1000f);
                 }
                 if (FloorExcutionB)
                 {
                     FloorExcutionB = false;
-                    Damage(1f); //excute player
+                    Damage(0.5f); //excute player
                 }
             }
         }
         else
         {
             MainBackground.GetComponent<BgMovement>().Speed = 0f;
+            MainBackground03.GetComponent<BgMovement>().Speed = 0f;
             Music01.SetActive(false);
             Music02.SetActive(false);
             Music03.SetActive(false);
