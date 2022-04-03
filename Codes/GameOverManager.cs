@@ -59,13 +59,13 @@ public class GameOverManager : MonoBehaviour
         {
             stage = 2;
             stageB = 5;
-            stPointOff = 5000;
+            stPointOff = 15000;
         }
         if (Database.GetComponent<Database>().ReadDataS("GameData", "Data", "status", 3) == "done")
         {
             stage = 3;
             stageB = 6;
-            stPointOff = 10000;
+            stPointOff = 75000;
         }
 
         BS = Database.GetComponent<Database>().ReadDataI("GameData", "Data", "score", stageB); //get best score
