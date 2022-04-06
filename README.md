@@ -36,7 +36,6 @@ Download the latest version to play the game.
 
 
 ## License
-- This project was used in ACTE State Tech Fair. 
 - DO NOT REUSE OR RECREATE OUR WORK.
 
 
@@ -49,7 +48,7 @@ Download the latest version to play the game.
 
 
 ## Contributers (Team Undefined)
-- Jaeah Lee
-- Junseo Oh
+- All Code By Jaeah Lee
+- All Art By Junseo Oh
 
 Copyright ©️ 2022 By Team Undefined 
