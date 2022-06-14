@@ -43,7 +43,7 @@ Download the latest version to play the game.
 <img width=auto height=auto max-width=500px max-height=500px align="center" src="https://github.com/RuthGyeul/Forbidden-Forest-Resources/blob/2.0/Preview/ezgif-4-fdde68893d.gif">
 
 ### Game Over
-<img width=auto height=auto max-width=500px max-height=500px align="center" src="https://github.com/RuthGyeul/Forbidden-Forest-Resources/blob/2.0/Preview/ezgif-4-9b564a8320.gif">
+<img width=auto height=auto max-width=500px max-height=500px align="center" src="https://github.com/RuthGyeul/Forbidden-Forest-Resources/blob/2.0/Preview/ezgif-3-4b3b940473.gif">
 
 
 ## License
