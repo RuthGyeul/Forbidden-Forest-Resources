@@ -39,9 +39,11 @@ Download the latest version to play the game.
 ### Choose Stage Level To Play
 <img width=auto height=auto max-width=500px max-height=500px align="center" src="https://github.com/RuthGyeul/Forbidden-Forest-Resources/blob/2.0/Preview/ezgif-4-9b564a8320.gif">
 
-### Pause Game
+### Options In Game
 <img width=auto height=auto max-width=500px max-height=500px align="center" src="https://github.com/RuthGyeul/Forbidden-Forest-Resources/blob/2.0/Preview/ezgif-4-9b564a8320.gif">
 
+### Game Over
+<img width=auto height=auto max-width=500px max-height=500px align="center" src="https://github.com/RuthGyeul/Forbidden-Forest-Resources/blob/2.0/Preview/ezgif-4-9b564a8320.gif">
 
 
 ## License
