@@ -33,7 +33,14 @@ Download the latest version to play the game.
 | Right Arrow | Move Right |
 
 ## Game Play
+### Volume Control & Tutorial
 <img width=auto height=auto max-width=500px max-height=500px align="center" src="https://github.com/RuthGyeul/Forbidden-Forest-Resources/blob/2.0/Preview/ezgif-4-9b564a8320.gif">
+### Volume Control & Tutorial
+
+<img width=auto height=auto max-width=500px max-height=500px align="center" src="https://github.com/RuthGyeul/Forbidden-Forest-Resources/blob/2.0/Preview/ezgif-4-9b564a8320.gif">
+
+
+
 
 ## License
 - DO NOT REUSE OR RECREATE OUR WORK.
